@@ -11,7 +11,7 @@ set "scriptLink=https://raw.githubusercontent.com/NeoCircuit-Studios/Simple-YTd/
 
 cd /d "%~dp0"
 
-color 1
+color 2
 
 if exist "NeoCircuit-Studios" (
     echo.
