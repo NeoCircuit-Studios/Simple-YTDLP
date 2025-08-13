@@ -27,6 +27,9 @@ echo         2025
 echo @@@@@@@@@@@@@@@@@@@@
 echo.
 
+echo This script auto-updates.
+echo.
+
 echo Loading..
 echo.
 
