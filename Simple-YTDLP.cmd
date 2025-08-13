@@ -11,6 +11,9 @@ set "scriptLink=https://raw.githubusercontent.com/NeoCircuit-Studios/Simple-YTDL
 
 cd /d "%~dp0"
 
+echo This script auto-updates.
+echo.
+
 color 2
 
 if exist "NeoCircuit-Studios" (
