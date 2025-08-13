@@ -7,7 +7,7 @@
 @echo off
 
 set "versionLink=https://raw.githubusercontent.com/NeoCircuit-Studios/Simple-YTDLP/main/NeoCircuit-Studios/version.guust"
-set "scriptLink=https://raw.githubusercontent.com/NeoCircuit-Studios/Simple-YTd/main/NeoCircuit-Studios/mainscripty.tmp.cmd"
+set "scriptLink=https://raw.githubusercontent.com/NeoCircuit-Studios/Simple-YTDLP/main/NeoCircuit-Studios/mainscripty.tmp.cmd"
 
 cd /d "%~dp0"
 
@@ -15,7 +15,7 @@ color 2
 
 if exist "NeoCircuit-Studios" (
     echo.
-    echo "Loading.."
+    echo Loading..
     echo.
 ) else (
     mkdir "NeoCircuit-Studios"
@@ -31,32 +31,30 @@ if exist "NeoCircuit-Studios" (
 
 timeout /t 3 >nul
 
-
-echo.
-echo "Updating Simple-YTDLP..."
-echo.
-
 cd "NeoCircuit-Studios"
 
-if exist "version.guust" (
-    type "version.guust" 
-) else (
-    curl -L -o "version.guust" "%versionLink%"
-    type "version.guust"
-)
+type "version.guust" 
+
+echo.
+echo Updating Simple-YTDLP...
+echo.
+
+curl -L "%versionLink%" -o "version.guust"
+type "version.guust"
 
 :: "" is for if the path has spaces at the start
+curl -L "%scriptLink%" -o "mainscripty.tmp.cmd"
 if exist "mainscripty.tmp.cmd" (
     start "" "mainscripty.tmp.cmd" 
 ) else (
-    curl -L -o "mainscripty.tmp.cmd" "%scriptLink%"
+    curl -L "%scriptLink%" -o "mainscripty.tmp.cmd"
     timeout /t 3 >nul
     if exist "mainscripty.tmp.cmd" (
         start "" "mainscripty.tmp.cmd"
     ) else (
         echo.
-        echo "Huh could not download the files..."
-        echo "ERROR 1"
-        exit /b 1
+        echo Huh.. could not download the needed files...
+        echo ERROR 1
+        pause
     )
 )
