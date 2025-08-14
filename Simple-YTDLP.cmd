@@ -14,7 +14,7 @@ cd /d "%~dp0"
 echo This script auto-updates.
 echo.
 
-color 1
+color 9
 y
 if exist "NeoCircuit-Studios" (
     echo.
