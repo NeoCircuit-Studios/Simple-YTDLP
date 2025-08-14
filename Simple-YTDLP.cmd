@@ -15,7 +15,7 @@ echo This script auto-updates.
 echo.
 
 color 9
-y
+
 if exist "NeoCircuit-Studios" (
     echo.
     echo Loading..
