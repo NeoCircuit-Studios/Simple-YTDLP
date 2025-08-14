@@ -140,8 +140,7 @@ if exist "bin.6.tmp.zip" (
 
 if exist "yt-dlp.exe" (
     echo 10%
-)
-else (
+) else (
     echo yt-dlp.exe not found!
     echo ERROR 3
     pause
@@ -149,8 +148,7 @@ else (
 
 if exist "ffmpeg.exe" (
     echo 40%
-)
-else (
+) else (
     echo ffmpeg.exe not found!
     echo ERROR 4
     pause
@@ -158,8 +156,7 @@ else (
 
 if exist "ffplay.exe" (
     echo 80%
-)
-else (
+) else (
     echo ffplay.exe not found!
     echo ERROR 5
     pause
@@ -167,8 +164,7 @@ else (
 
 if exist "ffprobe.exe" (
     echo 90%
-)
-else (
+) else (
     echo ffprobe.exe not found!
     echo ERROR 6
     pause
