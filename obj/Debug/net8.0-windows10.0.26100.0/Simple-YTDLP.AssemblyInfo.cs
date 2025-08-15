@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Simple-YTDLP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3194074a5633ba551efb93f7c38919ac152aa59e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7967e206a7ed756ec3e2ffe3186de9327ab1031d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Simple-YTDLP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Simple-YTDLP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
