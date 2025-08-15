@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "POYhG3pilk4=",
+  "success": true,
+  "projectFilePath": "Y:\\DEV\\Apps\\Simple-YTDLP\\Simple-YTDLP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\PSPC2\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.26100.57\\microsoft.windows.sdk.net.ref.10.0.26100.57.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <RootNamespace>Simple_YTDLP</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>False</UseWindowsForms>
+    <ApplicationIcon>Core\APP\Icon\app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Core\APP\sys\Downloading.png" />
+    <None Remove="Core\APP\sys\Mainmenu.png" />
+    <None Remove="Core\APP\sys\Splash.png" />
+    <None Remove="Core\Legal\LICENSE-ffmpeg.txt" />
+    <None Remove="Core\Legal\LICENSE-yt-dlp.txt" />
+    <None Remove="Core\ThirdParty\bin.1.tmp.zip" />
+    <None Remove="Core\ThirdParty\bin.2.tmp.zip" />
+    <None Remove="Core\ThirdParty\bin.3.tmp.zip" />
+    <None Remove="Core\ThirdParty\bin.6.tmp.zip" />
+    <None Remove="Core\ThirdParty\ffmpeg.exe" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Core\APP\Icon\app.ico" />
+    <Content Include="Core\Legal\LICENSE-ffmpeg.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Core\Legal\LICENSE-yt-dlp.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Core\ThirdParty\bin.1.tmp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Core\ThirdParty\bin.2.tmp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Core\ThirdParty\bin.3.tmp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Core\ThirdParty\bin.6.tmp.zip">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Core\APP\sys\Downloading.png" />
+    <Resource Include="Core\APP\sys\Mainmenu.png" />
+    <Resource Include="Core\APP\sys\Splash.png" />
+  </ItemGroup>
+
+</Project>

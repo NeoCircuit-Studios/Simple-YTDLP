@@ -195,7 +195,7 @@ set /p usrlink="Enter Your Public YouTube Playlist Link: "
 set "usrlink=%usrlink:"=%"
 ::If someone pastes a YouTube link in quotes, yt-dlp might misinterpret it. that would suck
 
-pause
+cd ..
 
 echo.
 
@@ -204,7 +204,7 @@ if "%usrlink%"=="" (
     goto retry_input
 )
 
-set /p mp3="Do you want to download the playlist as MP3? (y/n): (if no then it will be MP4)"
+set /p mp3="Do you want to download the playlist as MP3? (y/n): (if no then it will be MP4)  " 
 
 if /i "%mp3%"=="y" (
     echo.
