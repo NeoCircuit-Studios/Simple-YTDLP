@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.26100.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <AssemblyName>Simple-YTDLP Installer</AssemblyName>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <Title>Simple-YTDLP Installer</Title>
+    <Company>NeoCircuit-Studios</Company>
+    <Product>APP</Product>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="app.ico" />
+  </ItemGroup>
+
+</Project>

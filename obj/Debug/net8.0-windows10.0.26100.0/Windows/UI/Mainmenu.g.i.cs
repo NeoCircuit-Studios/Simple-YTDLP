@@ -149,7 +149,7 @@ namespace Simple_YTDLP.Windows.UI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Simple-YTDLP;V1.0.0.0;component/windows/ui/mainmenu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Simple-YTDLP;component/windows/ui/mainmenu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\Windows\UI\Mainmenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

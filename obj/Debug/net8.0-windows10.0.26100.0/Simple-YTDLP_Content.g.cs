@@ -11,9 +11,9 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/app/icon/app.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/legal/license-ffmpeg.txt")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/legal/license-yt-dlp.txt")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.1.tmp.zip")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.2.tmp.zip")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.3.tmp.zip")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.6.tmp.zip")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.1.tmp.guustpkg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.2.tmp.guustpkg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.3.tmp.guustpkg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("core/thirdparty/bin.6.tmp.guustpkg")]
 
 

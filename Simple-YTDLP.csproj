@@ -12,15 +12,22 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Core\Installer\**" />
+    <EmbeddedResource Remove="Core\Installer\**" />
+    <None Remove="Core\Installer\**" />
+    <Page Remove="Core\Installer\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Core\APP\sys\Downloading.png" />
     <None Remove="Core\APP\sys\Mainmenu.png" />
     <None Remove="Core\APP\sys\Splash.png" />
     <None Remove="Core\Legal\LICENSE-ffmpeg.txt" />
     <None Remove="Core\Legal\LICENSE-yt-dlp.txt" />
-    <None Remove="Core\ThirdParty\bin.1.tmp.zip" />
-    <None Remove="Core\ThirdParty\bin.2.tmp.zip" />
-    <None Remove="Core\ThirdParty\bin.3.tmp.zip" />
-    <None Remove="Core\ThirdParty\bin.6.tmp.zip" />
+    <None Remove="Core\ThirdParty\bin.1.tmp.guustPKG" />
+    <None Remove="Core\ThirdParty\bin.2.tmp.guustPKG" />
+    <None Remove="Core\ThirdParty\bin.3.tmp.guustPKG" />
+    <None Remove="Core\ThirdParty\bin.6.tmp.guustPKG" />
     <None Remove="Core\ThirdParty\ffmpeg.exe" />
   </ItemGroup>
 
@@ -32,16 +39,16 @@
     <Content Include="Core\Legal\LICENSE-yt-dlp.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Core\ThirdParty\bin.1.tmp.zip">
+    <Content Include="Core\ThirdParty\bin.1.tmp.guustPKG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Core\ThirdParty\bin.2.tmp.zip">
+    <Content Include="Core\ThirdParty\bin.2.tmp.guustPKG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Core\ThirdParty\bin.3.tmp.zip">
+    <Content Include="Core\ThirdParty\bin.3.tmp.guustPKG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Core\ThirdParty\bin.6.tmp.zip">
+    <Content Include="Core\ThirdParty\bin.6.tmp.guustPKG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -50,6 +57,21 @@
     <Resource Include="Core\APP\sys\Downloading.png" />
     <Resource Include="Core\APP\sys\Mainmenu.png" />
     <Resource Include="Core\APP\sys\Splash.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Core\ThirdParty\bin.1.tmp.zip">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Core\ThirdParty\bin.2.tmp.zip">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Core\ThirdParty\bin.3.tmp.zip">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="Core\ThirdParty\bin.6.tmp.zip">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

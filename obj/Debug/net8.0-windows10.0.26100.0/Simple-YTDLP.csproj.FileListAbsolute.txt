@@ -1,10 +1,6 @@
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\Legal\LICENSE-ffmpeg.txt
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\Legal\LICENSE-yt-dlp.txt
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.exe
-Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.1.tmp.zip
-Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.2.tmp.zip
-Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.3.tmp.zip
-Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.6.tmp.zip
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.deps.json
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.runtimeconfig.json
 Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.dll
@@ -31,3 +27,7 @@ Y:\DEV\Apps\Simple-YTDLP\obj\Debug\net8.0-windows10.0.26100.0\refint\Simple-YTDL
 Y:\DEV\Apps\Simple-YTDLP\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.pdb
 Y:\DEV\Apps\Simple-YTDLP\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP.genruntimeconfig.cache
 Y:\DEV\Apps\Simple-YTDLP\obj\Debug\net8.0-windows10.0.26100.0\ref\Simple-YTDLP.dll
+Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.1.tmp.guustPKG
+Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.2.tmp.guustPKG
+Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.3.tmp.guustPKG
+Y:\DEV\Apps\Simple-YTDLP\bin\Debug\net8.0-windows10.0.26100.0\Core\ThirdParty\bin.6.tmp.guustPKG

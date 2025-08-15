@@ -42,10 +42,10 @@ namespace Simple_YTDLP.Windows.UI
 
             var zipFiles = new Dictionary<string, string>
             {
-                ["ffmpeg.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.1.tmp.zip"),
-                ["ffplay.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.2.tmp.zip"),
-                ["ffprobe.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.3.tmp.zip"),
-                ["yt-dlp.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.6.tmp.zip")
+                ["ffmpeg.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.1.tmp.guustPKG"),
+                ["ffplay.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.2.tmp.guustPKG"),
+                ["ffprobe.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.3.tmp.guustPKG"),
+                ["yt-dlp.exe"] = Path.Combine(appDir, "Core", "ThirdParty", "bin.6.tmp.guustPKG")
             };
 
             if (exeFiles.All(File.Exists))
@@ -135,6 +135,12 @@ namespace Simple_YTDLP.Windows.UI
 
             ProgressBar.Value = 100;
             LogManager.LogToFile("All tools are installed successfully.");
+
+            InstallingText.Visibility = Visibility.Collapsed;
+            ProgressBar.Visibility = Visibility.Visible;
+
+            await ready();
+            return;
         }
 
 

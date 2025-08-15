@@ -1,0 +1,22 @@
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.exe
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.deps.json
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.runtimeconfig.json
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.dll
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\Microsoft.Windows.SDK.NET.dll
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\bin\Debug\net8.0-windows10.0.26100.0\WinRT.Runtime.dll
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\MainWindow.g.cs
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\App.g.cs
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer_Content.g.cs
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer_MarkupCompile.cache
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer_MarkupCompile.lref
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\MainWindow.baml
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.g.resources
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.GeneratedMSBuildEditorConfig.editorconfig
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.AssemblyInfoInputs.cache
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.AssemblyInfo.cs
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.csproj.CoreCompileInputs.cache
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.csproj.Up2Date
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Simple-YTDLP Installer.dll
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\refint\Simple-YTDLP Installer.dll
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\Installer.genruntimeconfig.cache
+Y:\DEV\Apps\Simple-YTDLP\Core\Installer\obj\Debug\net8.0-windows10.0.26100.0\ref\Simple-YTDLP Installer.dll
