@@ -65,61 +65,66 @@ namespace Installer
             string filePath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
             string dirPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
 
-
-
-            LogManager.LogToFile("Starting installing..", "INFO");
-
             if (File.Exists(filePath))
             {
                 MessageBox.Show("Simple-YTDLP is already installed... Install anyway? (this will reinstall the app)", "Simple-YTDLP Installer", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                install();
             }
             else
             {
-                if (!Directory.Exists(dirPath))
-                {
-                    Directory.CreateDirectory(dirPath);
-                    LogManager.LogToFile("Created directory: " + dirPath, "INFO");
-                }
+                install();
+            }
+        }
 
-                string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/install0.pack.guustPKG";
-                string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.1.tmp.guustPKG";
-                string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.2.tmp.guustPKG";
-                string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.3.tmp.guustPKG";
-                string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.6.tmp.guustPKG";
-                string savedir1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
-                string savedir2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core", "ThirdParty");
+        private void install()
+        {
+            LogManager.LogToFile("Starting installing..", "INFO");
 
-                if (!Directory.Exists(savedir1))
-                {
-                    Directory.CreateDirectory(dirPath);
-                    LogManager.LogToFile("Created directory: " + savedir1, "INFO");
-                }
+            string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
 
-                if (!Directory.Exists(savedir2))
-                {
-                    Directory.CreateDirectory(savedir2);
-                    LogManager.LogToFile("Created directory: " + savedir2, "INFO");
-                }
+            string filePath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+            string dirPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
 
-                using (WebClient client = new WebClient())
-                {
-                    client.DownloadFile(url1, savedir1);
-                    LogManager.LogToFile($"Downloaded [{url1}] to [{savedir1}]", "INFO");
-                    client.DownloadFile(url2, savedir2);
-                    LogManager.LogToFile($"Downloaded [{url2}] to [{savedir2}]", "INFO");
-                    client.DownloadFile(url3, savedir2);
-                    LogManager.LogToFile($"Downloaded [{url3}] to [{savedir2}]", "INFO");
-                    client.DownloadFile(url4, savedir2);
-                    LogManager.LogToFile($"Downloaded [{url4}] to [{savedir2}]", "INFO");
-                    client.DownloadFile(url5, savedir2);
-                    LogManager.LogToFile($"Downloaded [{url5}] to [{savedir2}]", "INFO");
-
-                }
-
-
-
+            if (!Directory.Exists(dirPath))
+            {
+                Directory.CreateDirectory(dirPath);
+                LogManager.LogToFile("Created directory: " + dirPath, "INFO");
             }
 
+            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/install0.pack.guustPKG";
+            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.1.tmp.guustPKG";
+            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.2.tmp.guustPKG";
+            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.3.tmp.guustPKG";
+            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.6.tmp.guustPKG";
+            string savedir1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
+            string savedir2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core", "ThirdParty");
+
+            if (!Directory.Exists(savedir1))
+            {
+                Directory.CreateDirectory(dirPath);
+                LogManager.LogToFile("Created directory: " + savedir1, "INFO");
+            }
+
+            if (!Directory.Exists(savedir2))
+            {
+                Directory.CreateDirectory(savedir2);
+                LogManager.LogToFile("Created directory: " + savedir2, "INFO");
+            }
+
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(url1, savedir1);
+                LogManager.LogToFile($"Downloaded [{url1}] to [{savedir1}]", "INFO");
+                client.DownloadFile(url2, savedir2);
+                LogManager.LogToFile($"Downloaded [{url2}] to [{savedir2}]", "INFO");
+                client.DownloadFile(url3, savedir2);
+                LogManager.LogToFile($"Downloaded [{url3}] to [{savedir2}]", "INFO");
+                client.DownloadFile(url4, savedir2);
+                LogManager.LogToFile($"Downloaded [{url4}] to [{savedir2}]", "INFO");
+                client.DownloadFile(url5, savedir2);
+                LogManager.LogToFile($"Downloaded [{url5}] to [{savedir2}]", "INFO");
+
+            }
         }
 
 

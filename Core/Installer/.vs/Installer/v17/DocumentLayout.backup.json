@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\installer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:installer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -38,11 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Installer",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\Installer.csproj",
               "RelativeDocumentMoniker": "Installer.csproj",
@@ -54,7 +54,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "app.manifest",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\app.manifest",
               "RelativeDocumentMoniker": "app.manifest",
@@ -102,7 +102,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -114,15 +114,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAgwEgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAuwFEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T21:55:24.024Z"
+              "WhenOpened": "2025-08-15T21:55:24.024Z",
+              "EditorCaption": ""
             }
           ]
         }
