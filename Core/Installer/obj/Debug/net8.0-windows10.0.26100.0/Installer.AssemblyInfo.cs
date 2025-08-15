@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeoCircuit-Studios")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3194074a5633ba551efb93f7c38919ac152aa59e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2a0afe5188d8333fe7e9e0e08ecd9654a216e4a1")]
 [assembly: System.Reflection.AssemblyProductAttribute("APP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Simple-YTDLP Installer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

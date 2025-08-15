@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\installer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:installer.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\installer\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{815BD74B-DA19-4EB5-AD68-EB49D7684E61}|Installer.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -34,11 +38,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "Installer",
+              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\Installer.csproj",
+              "RelativeDocumentMoniker": "Installer.csproj",
+              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\Installer.csproj",
+              "RelativeToolTip": "Installer.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-15T22:32:17.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "app.manifest",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\app.manifest",
               "RelativeDocumentMoniker": "app.manifest",
@@ -46,12 +62,11 @@
               "RelativeToolTip": "app.manifest",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
-              "WhenOpened": "2025-08-15T22:29:40.52Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T22:29:40.52Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "LogManager.cs",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\Scripts\\LogManager.cs",
               "RelativeDocumentMoniker": "Scripts\\LogManager.cs",
@@ -59,12 +74,11 @@
               "RelativeToolTip": "Scripts\\LogManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T22:04:04.8Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T22:04:04.8Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "App.xaml",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
@@ -76,7 +90,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -84,12 +98,11 @@
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAD8AAAAAAAAAAAAowBAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T21:59:24.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T21:59:24.305Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
@@ -101,7 +114,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
@@ -109,8 +122,7 @@
               "RelativeToolTip": "MainWindow.xaml.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAgwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-15T21:55:24.024Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-15T21:55:24.024Z"
             }
           ]
         }
