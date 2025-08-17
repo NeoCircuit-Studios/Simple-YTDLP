@@ -13,9 +13,13 @@
 
   <ItemGroup>
     <Compile Remove="Core\Installer\**" />
+    <Compile Remove="Core\Updater\**" />
     <EmbeddedResource Remove="Core\Installer\**" />
+    <EmbeddedResource Remove="Core\Updater\**" />
     <None Remove="Core\Installer\**" />
+    <None Remove="Core\Updater\**" />
     <Page Remove="Core\Installer\**" />
+    <Page Remove="Core\Updater\**" />
   </ItemGroup>
 
   <ItemGroup>

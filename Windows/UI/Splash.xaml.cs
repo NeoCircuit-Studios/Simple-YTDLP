@@ -1,6 +1,8 @@
 ﻿using APPLogManager;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -44,6 +46,8 @@ namespace Simple_YTDLP.Windows.UI
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string folderPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP");
             string filePath = Path.Combine(folderPath, "firstboot.guustFlag");
+            string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+
 
             if (!Directory.Exists(folderPath))
             {
@@ -61,21 +65,132 @@ namespace Simple_YTDLP.Windows.UI
                 //getlang(); // this is handy to know if it is the first boot or not.. to set like a language or something..
             }
 
-            version.Text = currentVersion; // Set the version text in the UI
+            version.Text = currentVersion; 
 
             loadingText.Text = "Checking for Updates....";
 
+            string installedVersionPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
+            string updateVersionPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP", "version.guustGV");
+
+            string installedText = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath).Trim() : "0.0.0.0";
+            string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath).Trim() : "0.0.0.0";
+
+            string installedTextupdater = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath).Trim() : "0.0.0.0";
+            string updateTextupdater = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath).Trim() : "0.0.0.0";
+
+            string installedVersionPathUpdater = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater", "version.guustGV");
+            string updateVersionPathUpdater = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater", "TMP", "version.guustGV");
+
+            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/main/version.guustGV";
+            string urlupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/updater/version.guustGV";
+            string exeName = "YT-DLP - Updater";
+
+            string updaterPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater", exeName + ".exe");
+
+
+
             if (File.Exists("version.guustGV"))
             {
-                //currentVersion = File.ReadAllText("version.guustGV");
-                File.WriteAllText("version.guustGV", currentVersion);
+                //File.WriteAllText("version.guustGV", currentVersion);
             }
             else
             {
                 File.WriteAllText("version.guustGV", currentVersion);
             }
 
-            // download bla bla
+            using (HttpClient client = new HttpClient())
+            {
+                async Task DownloadAsync(string url, string path)
+                {
+                    var data = await client.GetByteArrayAsync(url);
+                    await File.WriteAllBytesAsync(path, data);
+                    LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                }
+
+                await DownloadAsync(url1, Path.Combine(updateVersionPath, "version.guustGV"));
+            }
+
+
+            if (new Version(File.ReadAllText(installedVersionPath).Trim())
+                < new Version(File.ReadAllText(updateVersionPath).Trim()))
+            {
+                LogManager.LogToFile("Update available!", "INFO");
+                LogManager.LogToFile($"Local: '{installedVersionPath}' vs Server:'{updateVersionPath}' ", "INFO");
+
+                if (File.Exists(Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater", exeName + ".exe")))
+                {
+                    if (new Version(File.ReadAllText(installedTextupdater).Trim())
+                        < new Version(File.ReadAllText(updateTextupdater).Trim()))
+                    {
+                        LogManager.LogToFile("Update available for updater!", "INFO");
+                        LogManager.LogToFile($"Local: '{installedVersionPathUpdater}' vs Server: '{updateVersionPathUpdater}' ", "INFO");
+
+                        string savedirupdater = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater");
+                        string urlinstallupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/version.guustGV";
+                        string urlversionupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/update0.updater.pack.guustPKG";
+
+                        LogManager.LogToFile("Downloading update for updater..", "INFO");
+
+                        using (HttpClient client = new HttpClient())
+                        {
+                            async Task DownloadAsync(string url, string path)
+                            {
+                                var data = await client.GetByteArrayAsync(url);
+                                await File.WriteAllBytesAsync(path, data);
+                                LogManager.LogToFile($"Downloaded [{urlinstallupdater}] to [{savedirupdater}]", "INFO");
+                            }
+
+                            await DownloadAsync(urlinstallupdater, Path.Combine(savedirupdater, "update0.updater.pack.guustPKG"));
+                        }
+
+                        LogManager.LogToFile("Update for updater downloaded, now downloading version file..", "INFO");
+
+                        using (HttpClient client = new HttpClient())
+                        {
+                            async Task DownloadAsync(string url, string path)
+                            {
+                                var data = await client.GetByteArrayAsync(url);
+                                await File.WriteAllBytesAsync(path, data);
+                                LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                            }
+
+                            await DownloadAsync(url1, Path.Combine(urlversionupdater, "version.guustGV"));
+                        }
+
+                        LogManager.LogToFile("Update for updater downloaded, starting updater.", "INFO");
+
+                        LogManager.LogToFile("Starting.. " + exeName);
+
+                        // add an argument (for example: "fromapp")
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = updaterPath,
+                            Arguments = "-updateme",
+                            UseShellExecute = false
+                        });
+                        LogManager.LogToFile("Update started, exiting application.", "INFO");
+                        Application.Current.Shutdown();
+                    }
+                    else
+                    {
+                        LogManager.LogToFile("Updater is up to date, no need to update.", "INFO");
+
+                        LogManager.LogToFile("Starting.. " + exeName);
+
+                        // add an argument (for example: "fromapp")
+                        Process.Start(new ProcessStartInfo
+                        {
+                            FileName = updaterPath,
+                            Arguments = "-updateme",
+                            UseShellExecute = false
+                        });
+                        LogManager.LogToFile("Update started, exiting application.", "INFO");
+                        Application.Current.Shutdown();
+                    }
+                }
+   
+            }
+
         }
 
         private async Task StartSplash()

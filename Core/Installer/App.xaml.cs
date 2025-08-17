@@ -112,10 +112,10 @@ namespace Installer
 
         public static class VersionInfo
         {
-            //public static string Version = "1.0.9"; // Default version, can be updated dynamically
+            public static string Version = "1.0.0.0"; // Default version, can be updated dynamically
 
-            public static string Version =>
-                Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
+            //public static string Version =>
+                //Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
         }
     }
 

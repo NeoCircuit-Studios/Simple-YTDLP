@@ -1,10 +1,12 @@
 ﻿using APPLogManager2;
+using System.Diagnostics;
 using System.IO;
-using System.Net;
+using System.IO.Compression;
 using System.Net.Http;
-using System.Text;
 using System.Windows;
+using System.Windows.Input;
 using static Installer.App;
+
 namespace Installer
 {
     /// <summary>
@@ -67,7 +69,25 @@ namespace Installer
 
             if (File.Exists(filePath))
             {
-                MessageBox.Show("Simple-YTDLP is already installed... Install anyway? (this will reinstall the app)", "Simple-YTDLP Installer", MessageBoxButton.YesNoCancel, MessageBoxImage.Information);
+                var result = MessageBox.Show(
+                    "Simple-YTDLP is already installed... Install anyway? (this will reinstall the app)",
+                    "Simple-YTDLP Installer",
+                    MessageBoxButton.YesNoCancel,
+                    MessageBoxImage.Information);
+
+                if (result == MessageBoxResult.No)
+                {
+                    LogManager.LogToFile("User chose not to reinstall Simple-YTDLP.", "INFO");
+                    return;
+                }
+                else if (result == MessageBoxResult.Cancel)
+                {
+                    LogManager.LogToFile("User cancelled the installation.", "INFO");
+                    return;
+                }
+
+                // If Yes, continue installation...
+                LogManager.LogToFile("User chose to reinstall Simple-YTDLP.", "INFO");
                 install();
             }
             else
@@ -76,9 +96,22 @@ namespace Installer
             }
         }
 
-        private void install()
+
+        private async Task install()
         {
+            Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
+
             LogManager.LogToFile("Starting installing..", "INFO");
+
+            InstallBUT.Visibility = Visibility.Collapsed;
+
+            statusTEXT.Visibility = Visibility.Visible;
+
+            statusTEXT.Text = "Downloading..";
+
+            progress.Visibility = Visibility.Visible;
+
+            progress.Value = 1;
 
             string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
 
@@ -111,23 +144,97 @@ namespace Installer
                 LogManager.LogToFile("Created directory: " + savedir2, "INFO");
             }
 
-            using (WebClient client = new WebClient())
-            {
-                client.DownloadFile(url1, savedir1);
-                LogManager.LogToFile($"Downloaded [{url1}] to [{savedir1}]", "INFO");
-                client.DownloadFile(url2, savedir2);
-                LogManager.LogToFile($"Downloaded [{url2}] to [{savedir2}]", "INFO");
-                client.DownloadFile(url3, savedir2);
-                LogManager.LogToFile($"Downloaded [{url3}] to [{savedir2}]", "INFO");
-                client.DownloadFile(url4, savedir2);
-                LogManager.LogToFile($"Downloaded [{url4}] to [{savedir2}]", "INFO");
-                client.DownloadFile(url5, savedir2);
-                LogManager.LogToFile($"Downloaded [{url5}] to [{savedir2}]", "INFO");
+            LogManager.LogToFile("Downloading files from GitHub...", "INFO");
 
+            using (HttpClient client = new HttpClient())
+            {
+                async Task DownloadAsync(string url, string path)
+                {
+                    var data = await client.GetByteArrayAsync(url);
+                    await File.WriteAllBytesAsync(path, data);
+                    LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                }
+
+                await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"));
+                progress.Value = 25;
+                await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"));
+                progress.Value = 50;
+                await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"));
+                progress.Value = 75;
+                await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"));
+                progress.Value = 80;
+                await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"));
+                progress.Value = 100;
             }
+
+            statusTEXT.Text = "Installing..";
+
+            progress.Value = 1;
+
+            LogManager.LogToFile("Installing Simple-YTDLP..", "INFO");
+
+
+            string sourceFile1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
+            string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
+            string checkPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+            string checkPath1_1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+
+            //string sourceFile2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
+            //string extractPath2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
+
+            ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
+
+            LogManager.LogToFile("installed install0.pack.guustPKG to " + extractPath1, "INFO");
+
+            progress.Value = 50;
+
+            if (File.Exists(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe")) && (File.Exists(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.dll"))) && (Directory.Exists(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core"))))
+            {
+                progress.Value = 98;
+            }
+            else
+            {
+                LogManager.LogToFile("Failed to install Simple-YTDLP. Please try again.", "ERROR");
+                MessageBox.Show("Failed to install Simple-YTDLP. Please try again.", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG"));
+
+            LogManager.LogToFile("Deleted install0.pack.guustPKG from " + extractPath1, "INFO");
+
+            progress.Value = 100;
+
+            progress.Visibility = Visibility.Collapsed;
+
+            statusTEXT.Visibility = Visibility.Collapsed;
+
+            InstallBUT.Visibility = Visibility.Collapsed;
+
+
+            Mouse.OverrideCursor = null;
+
+            MessageBox.Show("Simple-YTDLP has been installed successfully!", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            openBUT.Visibility = Visibility.Visible;
+
         }
 
-
-
+        private void openBUT_Click(object sender, RoutedEventArgs e)
+        {
+            string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            string filePath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+            if (File.Exists(filePath))
+            {
+                Process.Start(new ProcessStartInfo(filePath) { UseShellExecute = true });
+                LogManager.LogToFile("Opened Simple-YTDLP.", "INFO");
+                Application.Current.Shutdown();
+            }
+            else
+            {
+                MessageBox.Show("Simple-YTDLP is not installed correctly.", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+        }
     }
 }
