@@ -6,9 +6,9 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
-    <AssemblyName>YT-DLP - Updater</AssemblyName>
+    <AssemblyName>SYTDLP-Updater</AssemblyName>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Title>YT-DLP - Updater</Title>
+    <Title>SYTDLP-Updater</Title>
     <Company>NeoCircuit-Studios</Company>
     <Product>APP</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>

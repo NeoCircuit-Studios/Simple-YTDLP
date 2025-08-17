@@ -34,7 +34,6 @@ namespace Simple_YTDLP.Windows.UI
 
         }
 
-
         private async Task Loading()
         {
             LogManager.LogToFile("----------Start--------------", "INFO");
@@ -83,11 +82,9 @@ namespace Simple_YTDLP.Windows.UI
 
             string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/main/version.guustGV";
             string urlupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/updater/version.guustGV";
-            string exeName = "YT-DLP - Updater";
+            string exeName = "SYTDLP-Updater.exe";
 
             string updaterPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater", exeName + ".exe");
-
-
 
             if (File.Exists("version.guustGV"))
             {
@@ -126,8 +123,8 @@ namespace Simple_YTDLP.Windows.UI
                         LogManager.LogToFile($"Local: '{installedVersionPathUpdater}' vs Server: '{updateVersionPathUpdater}' ", "INFO");
 
                         string savedirupdater = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater");
-                        string urlinstallupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/version.guustGV";
-                        string urlversionupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/update0.updater.pack.guustPKG";
+                        string urlupdateupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/updater/version.guustGV";
+                        string urlversionupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/SYTDLP-Updater.exe";
 
                         LogManager.LogToFile("Downloading update for updater..", "INFO");
 
@@ -137,10 +134,10 @@ namespace Simple_YTDLP.Windows.UI
                             {
                                 var data = await client.GetByteArrayAsync(url);
                                 await File.WriteAllBytesAsync(path, data);
-                                LogManager.LogToFile($"Downloaded [{urlinstallupdater}] to [{savedirupdater}]", "INFO");
+                                LogManager.LogToFile($"Downloaded [{urlupdateupdater}] to [{savedirupdater}]", "INFO");
                             }
 
-                            await DownloadAsync(urlinstallupdater, Path.Combine(savedirupdater, "update0.updater.pack.guustPKG"));
+                            await DownloadAsync(urlupdateupdater, Path.Combine(savedirupdater, "SYTDLP-Updater.exe"));
                         }
 
                         LogManager.LogToFile("Update for updater downloaded, now downloading version file..", "INFO");
@@ -161,7 +158,6 @@ namespace Simple_YTDLP.Windows.UI
 
                         LogManager.LogToFile("Starting.. " + exeName);
 
-                        // add an argument (for example: "fromapp")
                         Process.Start(new ProcessStartInfo
                         {
                             FileName = updaterPath,
@@ -177,7 +173,6 @@ namespace Simple_YTDLP.Windows.UI
 
                         LogManager.LogToFile("Starting.. " + exeName);
 
-                        // add an argument (for example: "fromapp")
                         Process.Start(new ProcessStartInfo
                         {
                             FileName = updaterPath,
@@ -188,9 +183,37 @@ namespace Simple_YTDLP.Windows.UI
                         Application.Current.Shutdown();
                     }
                 }
-   
-            }
+                else
+                {
+                    LogManager.LogToFile("Updater not found, downloading updater..", "INFO");
+                    string savedir = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "updater");
+                    string urlinstallupdater = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/updater/SYTDLP-Updater.exe";
 
+                    using (HttpClient client = new HttpClient())
+                    {
+                        async Task DownloadAsync(string url, string path)
+                        {
+                            var data = await client.GetByteArrayAsync(url);
+                            await File.WriteAllBytesAsync(path, data);
+                            LogManager.LogToFile($"Downloaded [{urlinstallupdater}] to [{savedir}]", "INFO");
+                        }
+
+                        await DownloadAsync(urlinstallupdater, Path.Combine(savedir, "SYTDLP-Updater.exe"));
+                    }
+
+                    LogManager.LogToFile("Updater downloaded, starting the updater.", "INFO");
+                    LogManager.LogToFile("Starting.. " + exeName);
+
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = updaterPath,
+                        Arguments = "-updateme",
+                        UseShellExecute = false
+                    });
+                    LogManager.LogToFile("Update started, exiting application.", "INFO");
+                    Application.Current.Shutdown();
+                }
+            }
         }
 
         private async Task StartSplash()

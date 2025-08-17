@@ -7,9 +7,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <AssemblyName>Simple-YTDLP Installer</AssemblyName>
+    <AssemblyName>Simple-YTDLP-Installer</AssemblyName>
     <ApplicationIcon>app.ico</ApplicationIcon>
-    <Title>Simple-YTDLP Installer</Title>
+    <Title>Simple-YTDLP-Installer</Title>
     <Company>NeoCircuit-Studios</Company>
     <Product>APP</Product>
   </PropertyGroup>
