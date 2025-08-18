@@ -188,9 +188,10 @@ namespace Updater
                 progress.Value = 99;
                 await Task.Delay(200);
 
-                try { Directory.Delete(tmpDir, true); } catch { /* ignore */ }
-                LogManager.LogToFile($"Deleted temporary directory. [{tmpDir}]", "DEBUG");
-    
+                File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG"));
+                Directory.Delete(tmpDir);
+
+                LogManager.LogToFile("Deleted temporary directorys..", "DEBUG");
 
                 progress.Value = 100;
                 LogManager.LogToFile("Update finished.", "INFO");
