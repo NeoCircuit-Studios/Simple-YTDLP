@@ -19,16 +19,20 @@ namespace Updater
         {
             InitializeComponent();
 
-            if (AppState.Fromapp == true)
+            this.Loaded += async (s, e) =>
             {
-                UpdateBUT.Visibility = Visibility.Collapsed;
-                statusTEXT.Visibility = Visibility.Visible;
-                progress.Visibility = Visibility.Visible;
+                if (AppState.Fromapp)
+                {
+                    UpdateBUT.Visibility = Visibility.Collapsed;
+                    statusTEXT.Visibility = Visibility.Visible;
+                    progress.Visibility = Visibility.Visible;
 
-                statusTEXT.Text = "Loading..";
+                    statusTEXT.Text = "Loading..";
 
-                Install();
-            }
+                    await Install();
+                    return;
+                }
+            };
         }
 
 
@@ -55,7 +59,7 @@ namespace Updater
 
             string installedText = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath).Trim() : "0.0.0.0";
             string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath).Trim() : "0.0.0.0";
-            string Url0 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/update/main/version.guustGV";
+            string Urlverison = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/version.guustGV";
 
             string exeName = "Simple-YTDLP";
 
@@ -129,7 +133,7 @@ namespace Updater
 
                     LogManager.LogToFile("Update file not found at " + Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "update0.pack.guustPKG"), "ERROR");
 
-                    string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/install0.pack.guustPKG";
+                    string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/update0.pack.guustPKG";
 
                     string savedir1 = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP");
 

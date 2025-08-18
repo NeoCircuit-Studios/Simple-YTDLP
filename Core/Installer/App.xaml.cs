@@ -15,7 +15,7 @@ namespace Installer
     {
         public static bool _willshutthefuckup = false;
         public static string RunningTMPfilename = "Simple-YTDLP-INSTALLER.guustTMP";
-        private FileStream? _lockFileStream; // nullable to allow null assignment
+        private FileStream? _lockFileStream; 
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -61,7 +61,6 @@ namespace Installer
                 LogManager.LogToFile($"Failed to delete leftover temp lock file on startup: {ex.Message}", "ERROR");
             }
 
-            // Then continue with your existing lock file creation
             try
             {
                 _lockFileStream = new FileStream(tempFilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);

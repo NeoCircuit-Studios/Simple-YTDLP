@@ -20,11 +20,9 @@ namespace Installer
         {
             InitializeComponent();
 
-
             string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string FolderPath = Path.Combine(AppDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "installer");
             string FilePath = Path.Combine(FolderPath, "firstboot.guustFlag");
-
 
             LogManager.LogToFile("----------Start--------------", "INFO");
 
@@ -38,7 +36,7 @@ namespace Installer
                 Directory.CreateDirectory(FolderPath);
             }
 
-            if (File.Exists(FilePath) == false) // this crap does not help much rn
+            if (File.Exists(FilePath) == false) 
             {
                 File.Create(FilePath).Close(); // Create empty file and close the stream
                 LogManager.LogToFile("firstboot..", "INFO");
@@ -47,16 +45,6 @@ namespace Installer
             {
                 LogManager.LogToFile("Not firstboot..", "INFO");
                 //getlang(); // this is handy to know if it is the first boot or not.. to set like a language or something..
-            }
-
-            if (File.Exists("version.guustGV"))
-            {
-                //currentVersion = File.ReadAllText("version.guustGV");
-                File.WriteAllText("version.guustGV", currentVersion);
-            }
-            else
-            {
-                File.WriteAllText("version.guustGV", currentVersion);
             }
         }
 
@@ -124,11 +112,11 @@ namespace Installer
                 LogManager.LogToFile("Created directory: " + dirPath, "INFO");
             }
 
-            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/install0.pack.guustPKG";
-            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.1.tmp.guustPKG";
-            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.2.tmp.guustPKG";
-            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.3.tmp.guustPKG";
-            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.6.tmp.guustPKG";
+            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/update0.pack.guustPKG";
+            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.1.tmp.guustPKG";
+            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.2.tmp.guustPKG";
+            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.3.tmp.guustPKG";
+            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.6.tmp.guustPKG";
             string savedir1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
             string savedir2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core", "ThirdParty");
 

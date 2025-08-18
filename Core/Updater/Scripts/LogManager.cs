@@ -7,7 +7,7 @@ namespace APPLogManager
     {
         private static readonly string logPath = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-            "NeoCircuit-Studios", "Simple-YTDLP", "Updater", "logs", "Simple-YTDLP - Updater.log");
+            "NeoCircuit-Studios", "Simple-YTDLP", "Updater", "logs", "Simple-YTDLP-Updater.log");
 
         static LogManager()
         {
