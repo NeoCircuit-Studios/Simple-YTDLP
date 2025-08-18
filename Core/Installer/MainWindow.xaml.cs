@@ -14,8 +14,6 @@ namespace Installer
     /// </summary>
     public partial class MainWindow : Window
     {
-        string currentVersion = VersionInfo.Version;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -27,7 +25,7 @@ namespace Installer
             LogManager.LogToFile("----------Start--------------", "INFO");
 
             LogManager.LogToFile("@NeoCircuit-Studios@", "INFO");
-            LogManager.LogToFile($"Simple_YTDLP - Installer {currentVersion}", "INFO");
+            LogManager.LogToFile($"Simple_YTDLP - Installer", "INFO");
             LogManager.LogToFile("Copyright (C) 2025 NeoCircuit Studios", "INFO");
 
 

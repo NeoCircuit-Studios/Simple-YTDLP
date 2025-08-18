@@ -4,6 +4,7 @@ using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.IO.Compression;
 using System.Net.Http;
+using System.Security.Policy;
 using System.Windows;
 using System.Xml.Linq;
 using static Updater.App;
@@ -28,6 +29,7 @@ namespace Updater
                     progress.Visibility = Visibility.Visible;
 
                     statusTEXT.Text = "Loading..";
+                    LogManager.LogToFile("Loading...");
 
                     await Install();
                     return;
@@ -51,176 +53,165 @@ namespace Updater
 
         private async Task Install()
         {
-            string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            LogManager.LogToFile("---------- Install Started --------------", "INFO");
+
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string folderPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP");
+            string tmpDir = Path.Combine(folderPath, "TMP");
 
+            string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string installedVersionPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
-            string updateVersionPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP", "version.guustGV");
 
-            string installedText = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath).Trim() : "0.0.0.0";
-            string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath).Trim() : "0.0.0.0";
-            string Urlverison = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/version.guustGV";
+            string updateVersionPath = Path.Combine(tmpDir, "version.guustGV");
+            string versionUrl = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/version.guustGV";
 
-            string exeName = "Simple-YTDLP";
+            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/update0.pack.guustPKG";
+            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.1.tmp.guustPKG";
+            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.2.tmp.guustPKG";
+            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.3.tmp.guustPKG";
+            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/Core/ThirdParty/bin.6.tmp.guustPKG";
 
-            if (new Version(File.ReadAllText(installedVersionPath).Trim())
-               < new Version(File.ReadAllText(updateVersionPath).Trim()))
+            string savedir1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
+            string savedir2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core", "ThirdParty");
+
+            string sourceFile1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
+            string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
+            string checkPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+
+            Directory.CreateDirectory(tmpDir);
+
+
+            // --- Helper for safe version parsing ---
+            Version SafeParseVersion(string text)
             {
-                // updatefile = %appdata%\NeoCircuit-Studios\Simple-YTDLP\update0.pack.guustPKG
-
-                if (File.Exists(Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP", "update0.pack.guustPKG")))
+                try
                 {
-                    statusTEXT.Text = $"Closing {exeName}...";
-                    progress.Value = 30;
-                    LogManager.LogToFile("Closing " + exeName);
+                    return new Version(text.Trim());
+                }
+                catch
+                {
+                    return new Version("0.0.0.0");
+                }
+            }
 
-                    var processes = Process.GetProcessesByName(exeName);
+            // --- Download latest version file ---
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var data = await client.GetByteArrayAsync(versionUrl);
+                    await File.WriteAllBytesAsync(updateVersionPath, data);
+                    LogManager.LogToFile($"Downloaded latest version file from {versionUrl} to {updateVersionPath}", "INFO");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogToFile($"Failed to download version file: {ex.Message}", "ERROR");
+                return; // stop update
+            }
 
-                    foreach (var process in processes)
+            progress.Value = 10;
+
+            // --- Read versions ---
+            string installedText = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath) : "0.0.0.0";
+            string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath) : "0.0.0.0";
+
+            Version installedVer = SafeParseVersion(installedText);
+            Version latestVer = SafeParseVersion(updateText);
+
+            LogManager.LogToFile($"Installed version: {installedVer}", "INFO");
+            LogManager.LogToFile($"Latest version: {latestVer}", "INFO");
+
+            // --- Compare ---
+            if (installedVer < latestVer)
+            {
+                LogManager.LogToFile("Update available! Starting update procedure...", "INFO");
+
+                LogManager.LogToFile("Downloading update package...", "INFO");  
+
+                statusTEXT.Text = "Downloading...";
+
+                using (HttpClient client = new HttpClient())
+                {
+                    async Task<bool> DownloadAsync(string url, string path)
                     {
                         try
-                        {
-                            process.Kill();
-                            process.WaitForExit();
-                            LogManager.LogToFile($"Closed {exeName}.exe (PID: {process.Id})");
-                        }
-                        catch (Exception ex)
-                        {
-                            LogManager.LogToFile($"Could not close {exeName}.exe: {ex.Message}");
-                        }
-                    }
-
-                    if (!processes.Any())
-                    {
-                        LogManager.LogToFile($"{exeName}.exe was not running.");
-                    }
-
-                    progress.Value = 50;
-                    statusTEXT.Text = "Updating";
-
-                    string sourceFile1 = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP", "update0.pack.guustPKG");
-                    string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
-
-                    ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
-
-                    LogManager.LogToFile("installed update0.pack.guustPKG to " + extractPath1, "INFO");
-
-                    LogManager.LogToFile("Update completed successfully.");
-                    statusTEXT.Text = "Done..";
-                    progress.Value = 100;
-
-                    await Task.Delay(200);
-
-                    progress.Value = 10;
-
-                    statusTEXT.Text = $"starting {exeName}...";
-                    LogManager.LogToFile("Starting " + exeName);
-                    Process.Start(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", exeName + ".exe"));
-                    progress.Value = 100;
-
-                    LogManager.LogToFile("Update finished successfully.");
-
-                    statusTEXT.Text = "waiting..";
-
-                    await Task.Delay(1500);
-
-                    Application.Current.Shutdown();
-                }
-                else
-                {
-                    statusTEXT.Text = "Update file not found!";
-                    progress.Value = 10;
-
-                    LogManager.LogToFile("Update file not found at " + Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "update0.pack.guustPKG"), "ERROR");
-
-                    string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP/update/update0.pack.guustPKG";
-
-                    string savedir1 = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP");
-
-
-                    using (HttpClient client = new HttpClient())
-                    {
-                        async Task DownloadAsync(string url, string path)
                         {
                             var data = await client.GetByteArrayAsync(url);
                             await File.WriteAllBytesAsync(path, data);
                             LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
-                        }
-
-                        await DownloadAsync(url1, Path.Combine(savedir1, "update0.pack.guustPKG"));
-                        progress.Value = 20;
-                    }
-
-                    statusTEXT.Text = $"Closing {exeName}...";
-                    progress.Value = 30;
-                    LogManager.LogToFile("Closing " + exeName);
-
-                    var processes = Process.GetProcessesByName(exeName);
-
-                    foreach (var process in processes)
-                    {
-                        try
-                        {
-                            process.Kill();
-                            process.WaitForExit();
-                            LogManager.LogToFile($"Closed {exeName}.exe (PID: {process.Id})");
+                            return true;
                         }
                         catch (Exception ex)
                         {
-                            LogManager.LogToFile($"Could not close {exeName}.exe: {ex.Message}");
+                            LogManager.LogToFile($"Failed to download [{url}]: {ex.Message}", "ERROR");
+                            MessageBox.Show($"Failed to download: {url}\n\n{ex.Message}",
+                                            "Download Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return false;
                         }
                     }
+                    Directory.CreateDirectory(savedir2);
 
-                    if (!processes.Any())
-                    {
-                        LogManager.LogToFile($"{exeName}.exe was not running.");
-                    }
-
-                    progress.Value = 50;
-                    statusTEXT.Text = "Updating";
-
-                    string sourceFile1 = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "TMP", "update0.pack.guustPKG");
-                    string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
-
-                    ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
-
-                    LogManager.LogToFile("installed update0.pack.guustPKG to " + extractPath1, "INFO");
-
-                    LogManager.LogToFile("Update completed successfully.");
-                    statusTEXT.Text = "Done..";
-                    progress.Value = 100;
-
-                    await Task.Delay(200);
-
-                    progress.Value = 10;
-
-                    statusTEXT.Text = $"starting {exeName}...";
-                    LogManager.LogToFile("Starting " + exeName);
-                    Process.Start(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", exeName + ".exe"));
-                    progress.Value = 100;
-
-                    LogManager.LogToFile("Update finished successfully.");
-
-                    statusTEXT.Text = "waiting..";
-
-                    await Task.Delay(1500);
-
-                    Application.Current.Shutdown();
+                    if (!await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"))) return;
+                    progress.Value = 25;
+                    if (!await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"))) return;
+                    progress.Value = 30;
+                    if (!await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"))) return;
+                    progress.Value = 35;
+                    if (!await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"))) return;
+                    progress.Value = 40;
+                    if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
+                    progress.Value = 45;
                 }
+                statusTEXT.Text = "Installing..";
+
+                LogManager.LogToFile("Installing update package...", "INFO");
+
+                ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
+                progress.Value = 60;
+
+                LogManager.LogToFile("Update package extracted successfully.", "INFO");
+
+                if (File.Exists(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe")) && (Directory.Exists(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core"))))
+                {
+                    progress.Value = 75;
+                }
+                else
+                {
+                    LogManager.LogToFile("Failed to update Simple-YTDLP. Please try again.", "ERROR");
+                    MessageBox.Show("Failed to update Simple-YTDLP. Please try again.", "Simple-YTDLP Updater", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+
+                LogManager.LogToFile("updating version file for main app...", "INFO");
+                File.Copy(updateVersionPath, Path.Combine(extractPath1, "version.guustGV"), overwrite: true);
+                progress.Value = 99;
+                await Task.Delay(200);
+
+                try { Directory.Delete(tmpDir, true); } catch { /* ignore */ }
+                LogManager.LogToFile($"Deleted temporary directory. [{tmpDir}]", "DEBUG");
+    
+
+                progress.Value = 100;
+                LogManager.LogToFile("Update finished.", "INFO");
+
+                LogManager.LogToFile("---------- Install Finished --------------", "INFO");
+
+                LogManager.LogToFile("Starting main app ");
+
+                Process.Start(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe"));
+
+                statusTEXT.Text = "waiting..";
+
+                await Task.Delay(1500);
+
+                Application.Current.Shutdown();
+
             }
             else
             {
                 LogManager.LogToFile("No update needed. Installed version is up to date.", "INFO");
-                if (!AppState.Fromapp)
-                {
-                    MessageBox.Show("No update needed. Installed version is up to date.", "Simple-YTDLP Updater", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                statusTEXT.Text = "No update needed... waiting 10 sec";
-                progress.Value = 100;
-
-                await Task.Delay(10000);
-
-                Application.Current.Shutdown();
+                statusTEXT.Text = "No update needed.";
             }
         }
     }

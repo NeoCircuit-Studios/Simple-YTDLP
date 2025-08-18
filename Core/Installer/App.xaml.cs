@@ -108,14 +108,6 @@ namespace Installer
             [DllImport("kernel32.dll")]
             public static extern bool AllocConsole();
         }
-
-        public static class VersionInfo
-        {
-            public static string Version = "1.0.0.0"; // Default version, can be updated dynamically
-
-            //public static string Version =>
-                //Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
-        }
     }
 
 }

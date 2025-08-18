@@ -60,6 +60,9 @@ namespace Simple_YTDLP.Windows.UI
             else
             {
                 LogManager.LogToFile("Not firstboot..", "INFO");
+                // Local version file (in working dir)
+                if (!File.Exists("version.guustGV"))
+                    File.WriteAllText("version.guustGV", currentVersion);
             }
 
             version.Text = currentVersion;
@@ -79,10 +82,6 @@ namespace Simple_YTDLP.Windows.UI
             string urlMainVersion = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/version.guustGV";
             string urlUpdaterVersion = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/version.guustGV";
             string urlUpdaterExe = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/Simple-YTDLP-updater/update/SYTDLP-Updater.exe";
-
-            // Local version file (in working dir)
-            if (!File.Exists("version.guustGV"))
-                File.WriteAllText("version.guustGV", currentVersion);
 
             // ---- Helper ----
             async Task DownloadAsync(string url, string path)
