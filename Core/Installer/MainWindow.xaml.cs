@@ -124,11 +124,11 @@ namespace Installer
                 LogManager.LogToFile("Created directory: " + dirPath, "INFO");
             }
 
-            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/install0.pack.guustPKG";
-            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.1.tmp.guustPKG";
-            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.2.tmp.guustPKG";
-            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.3.tmp.guustPKG";
-            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/Core/ThirdParty/bin.6.tmp.guustPKG";
+            string url1 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/install0.pack.guustPKG";
+            string url2 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.1.tmp.guustPKG";
+            string url3 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.2.tmp.guustPKG";
+            string url4 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.3.tmp.guustPKG";
+            string url5 = "https://github.com/NeoCircuit-Studios/Simple-YTDLP/raw/refs/heads/main/pkg/install/main/Core/ThirdParty/bin.6.tmp.guustPKG";
             string savedir1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
             string savedir2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Core", "ThirdParty");
 
@@ -148,22 +148,37 @@ namespace Installer
 
             using (HttpClient client = new HttpClient())
             {
-                async Task DownloadAsync(string url, string path)
+                async Task<bool> DownloadAsync(string url, string path)
                 {
-                    var data = await client.GetByteArrayAsync(url);
-                    await File.WriteAllBytesAsync(path, data);
-                    LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                    try
+                    {
+                        var data = await client.GetByteArrayAsync(url);
+                        await File.WriteAllBytesAsync(path, data);
+                        LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        LogManager.LogToFile($"Failed to download [{url}]: {ex.Message}", "ERROR");
+                        MessageBox.Show($"Failed to download: {url}\n\n{ex.Message}",
+                                        "Download Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return false;
+                    }
                 }
 
-                await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"));
+                if (!await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"))) return;
                 progress.Value = 25;
-                await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"));
+
+                if (!await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"))) return;
                 progress.Value = 50;
-                await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"));
+
+                if (!await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"))) return;
                 progress.Value = 75;
-                await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"));
+
+                if (!await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"))) return;
                 progress.Value = 80;
-                await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"));
+
+                if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
                 progress.Value = 100;
             }
 
