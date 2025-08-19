@@ -46,9 +46,6 @@
         <Button x:Name="okBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Okbut_Click" Margin="0,406,0,0" Width="110" Height="30"></Button>
 
 
-
-
-
         <TextBlock x:Name="downloadingTEXR" Text="Downloading Playlist.."
                    FontSize="60" Opacity="0" FontWeight="Bold" Foreground="Green"
                    VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" Height="84" Width="690" RenderTransformOrigin="0.5,0.5" Margin="50,135,0,0">
@@ -72,7 +69,7 @@
 
 
         <Button x:Name="thxBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="Done" HorizontalAlignment="Left" VerticalAlignment="Top" Click="THXbut_Click" Margin="232,365,0,0" Width="230" Height="30"></Button>
-        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="280,0,0,96" Height="66" Width="172"></Button>
+        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="261,0,0,96" Height="66" Width="172"></Button>
 
 
         <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Collapsed" Opacity="0">
