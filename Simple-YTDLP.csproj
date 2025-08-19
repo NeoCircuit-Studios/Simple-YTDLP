@@ -33,7 +33,6 @@
     <None Remove="Core\ThirdParty\bin.3.tmp.guustPKG" />
     <None Remove="Core\ThirdParty\bin.6.tmp.guustPKG" />
     <None Remove="Core\ThirdParty\ffmpeg.exe" />
-    <None Remove="pkg\version.guustGV" />
     <None Remove="Simple-YTDLP.exe.lnk" />
     <None Remove="update0.pack.guustPKG.sample" />
   </ItemGroup>
@@ -56,9 +55,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Core\ThirdParty\bin.6.tmp.guustPKG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="pkg\version.guustGV">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Simple-YTDLP.exe.lnk">
@@ -86,6 +82,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Update="Core\ThirdParty\bin.6.tmp.zip">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="pkg\version.guustGV">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
