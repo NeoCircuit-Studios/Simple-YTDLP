@@ -110,11 +110,34 @@ namespace Simple_YTDLP
 
     public static class VersionInfo
     {
-        public static string Version = "1.0.0.0"; // Default version, can be updated dynamically
+        private static readonly string versionFilePath =
+            Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86),
+            "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
 
-        //public static string Version =>
-            //Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "0.0.0.0";
+        public static string Version
+        {
+            get
+            {
+                try
+                {
+                    if (File.Exists(versionFilePath))
+                    {
+                        string text = File.ReadAllText(versionFilePath).Trim();
+                        return string.IsNullOrWhiteSpace(text) ? "0.0.0.0" : text;
+                    }
+                    else
+                    {
+                        return "0.0.0.0"; // default if file not found
+                    }
+                }
+                catch
+                {
+                    return "0.0.0.0"; // fallback if error
+                }
+            }
+        }
     }
+
 
     public static class AppState
     {

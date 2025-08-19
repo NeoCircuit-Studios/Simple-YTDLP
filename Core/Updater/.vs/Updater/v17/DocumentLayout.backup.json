@@ -1,37 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\",
+  "WorkspaceRootPath": "L:\\Simple-YTDLP\\Core\\Updater\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\scripts\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:scripts\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\updater.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\scripts\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:scripts\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\updater.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:updater.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\updater.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\updater.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:updater.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:app.manifest||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|y:\\dev\\apps\\simple-ytdlp\\core\\updater\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
@@ -48,9 +48,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Updater.csproj",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
               "RelativeDocumentMoniker": "Updater.csproj",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
               "RelativeToolTip": "Updater.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
@@ -60,9 +60,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "app.manifest",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\app.manifest",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\app.manifest",
               "RelativeDocumentMoniker": "app.manifest",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\app.manifest",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\app.manifest",
               "RelativeToolTip": "app.manifest",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
@@ -72,9 +72,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Updater",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
               "RelativeDocumentMoniker": "Updater.csproj",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\Updater.csproj",
               "RelativeToolTip": "Updater.csproj",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-08-16T18:41:18.636Z"
@@ -83,20 +83,21 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "App.xaml",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\App.xaml",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml",
               "RelativeDocumentMoniker": "App.xaml",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\App.xaml",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-16T17:50:45.201Z"
+              "WhenOpened": "2025-08-16T17:50:45.201Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "LogManager.cs",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Scripts\\LogManager.cs",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\Scripts\\LogManager.cs",
               "RelativeDocumentMoniker": "Scripts\\LogManager.cs",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\Scripts\\LogManager.cs",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\Scripts\\LogManager.cs",
               "RelativeToolTip": "Scripts\\LogManager.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAcwCEAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -106,9 +107,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "App.xaml.cs",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\App.xaml.cs",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\App.xaml.cs",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml.cs",
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAHIAAAAAAAAAAAAowIUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -116,24 +117,25 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-16T17:43:59.364Z"
+              "WhenOpened": "2025-08-16T17:43:59.364Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
+              "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
-              "ToolTip": "Y:\\DEV\\Apps\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
+              "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAKgAAAAAAAAAAAAYwL4AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAwwB4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-16T17:43:55.829Z",
               "EditorCaption": ""

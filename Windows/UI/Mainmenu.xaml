@@ -10,7 +10,7 @@
         <Image x:Name="Background" Width="1090" Height="600" Stretch="Fill" 
                VerticalAlignment="Center"  Opacity="1" Source="/Core/APP/sys/mainmenu.png"  HorizontalAlignment="Center" Visibility="Visible" />
 
-        <TextBlock x:Name="InstallingText" Text="Installing Tools.."
+        <TextBlock x:Name="InstallingText" Text="Tools Installeren.."
                    FontSize="80" Opacity="0" FontWeight="Bold" Foreground="White"
                    VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" Height="118" Width="622" RenderTransformOrigin="0.5,0.5" Margin="260,236,0,0">
             <TextBlock.RenderTransform>
@@ -35,14 +35,14 @@
 
 
 
-        <TextBlock x:Name="infoText" Text="Download YT Playlist:"
+        <TextBlock x:Name="infoText" Text="Download een YT Playlist naar MP3:"
                    FontSize="70" Opacity="0" FontWeight="Bold" Foreground="White"
                    VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Height="84" Width="714" RenderTransformOrigin="0.5,0.5" Margin="0,168,0,0">
         </TextBlock>
 
 
         <TextBox x:Name="YTLinkTextBox" Width="338" Height="30" 
-                 Visibility="Collapsed" Opacity="0" Margin="0,334,0,0" Text="Public Youtube or Youtube Music link 'https://youtu.be/xvF'"  HorizontalAlignment="Center"
+                 Visibility="Collapsed" Opacity="0" Margin="0,334,0,0" Text="Public Youtube of Youtube Music link 'https://youtu.be/xvF'"  HorizontalAlignment="Center"
                  VerticalAlignment="Top" Background="LightCyan" GotFocus="YTLinkTextBox_GotFocus" FontSize="15" LostFocus="YTLinkTextBox_LostFocus"/>
 
         <Button x:Name="okBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Okbut_Click" Margin="0,406,0,0" Width="110" Height="30"></Button>
@@ -74,7 +74,7 @@
 
 
         <Button x:Name="thxBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="Done" HorizontalAlignment="Left" VerticalAlignment="Top" Click="THXbut_Click" Margin="232,365,0,0" Width="230" Height="30"></Button>
-        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="Open Folder" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="280,0,0,96" Height="66" Width="134"></Button>
+        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="280,0,0,96" Height="66" Width="134"></Button>
 
 
         <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Collapsed" Opacity="0">

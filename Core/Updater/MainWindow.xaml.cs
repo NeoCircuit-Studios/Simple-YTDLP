@@ -28,7 +28,7 @@ namespace Updater
                     statusTEXT.Visibility = Visibility.Visible;
                     progress.Visibility = Visibility.Visible;
 
-                    statusTEXT.Text = "Loading..";
+                    statusTEXT.Text = "Laden..";
                     LogManager.LogToFile("Loading...");
 
                     await Install();
@@ -45,7 +45,7 @@ namespace Updater
             statusTEXT.Visibility = Visibility.Visible;
             progress.Visibility = Visibility.Visible;
 
-            statusTEXT.Text = "Loading..";
+            statusTEXT.Text = "Laden..";
 
             await Install();
             return;
@@ -116,6 +116,10 @@ namespace Updater
             string installedText = File.Exists(installedVersionPath) ? File.ReadAllText(installedVersionPath) : "0.0.0.0";
             string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath) : "0.0.0.0";
 
+            string ShortcutPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe.lnk");
+            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+            string startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+
             Version installedVer = SafeParseVersion(installedText);
             Version latestVer = SafeParseVersion(updateText);
 
@@ -129,7 +133,7 @@ namespace Updater
 
                 LogManager.LogToFile("Downloading update package...", "INFO");  
 
-                statusTEXT.Text = "Downloading...";
+                statusTEXT.Text = "Downloaden...";
 
                 using (HttpClient client = new HttpClient())
                 {
@@ -163,11 +167,16 @@ namespace Updater
                     if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
                     progress.Value = 45;
                 }
-                statusTEXT.Text = "Installing..";
+                statusTEXT.Text = "Installeren..";
 
                 LogManager.LogToFile("Installing update package...", "INFO");
 
                 ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
+
+                File.Copy(Path.Combine(ShortcutPath), desktopPath);
+                File.Copy(Path.Combine(ShortcutPath), startMenuPath);
+
+                LogManager.LogToFile("Copied shortcut to Desktop and Start Menu.", "INFO");
                 progress.Value = 60;
 
                 LogManager.LogToFile("Update package extracted successfully.", "INFO");
@@ -202,7 +211,7 @@ namespace Updater
 
                 Process.Start(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe"));
 
-                statusTEXT.Text = "waiting..";
+                statusTEXT.Text = "wachten..";
 
                 await Task.Delay(1500);
 
@@ -212,7 +221,7 @@ namespace Updater
             else
             {
                 LogManager.LogToFile("No update needed. Installed version is up to date.", "INFO");
-                statusTEXT.Text = "No update needed.";
+                statusTEXT.Text = "Geen update nodig.";
             }
         }
     }

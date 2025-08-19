@@ -13,7 +13,10 @@
     
     <Grid>
 
-        <TextBlock x:Name="infoTeXT" Visibility="Visible" Opacity="1" Text="Simple-YTDLP:" FontSize="25"  Background="AliceBlue" Margin="78,32,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="Background" Width="1090" Height="600" Stretch="None" 
+               VerticalAlignment="Center" Source="/Core/APP/image/IMG_2676.PNG" Opacity="1"  HorizontalAlignment="Center" Visibility="Visible" />
+
+        <TextBlock x:Name="infoTeXT" Visibility="Visible" Opacity="1" Foreground="White" Text="Simple-YTDLP:" Background="Transparent"  FontSize="25" Margin="78,32,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -23,13 +26,13 @@
                 </TransformGroup>
             </TextBlock.RenderTransform></TextBlock>
 
-        <Button x:Name="InstallBUT" Visibility="Visible" Opacity="1" Content="Install" FontSize="20" Background="#FFB0C4DE" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="29" Click="InstallBUT_Click"/>
-        <Button x:Name="openBUT" Visibility="Collapsed" Opacity="1" Content="Open" FontSize="20" Background="#FFB0C4DE" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="29" Click="openBUT_Click"/>
+        <Button x:Name="InstallBUT" Visibility="Visible" Opacity="1" Content="Installeren" FontSize="20" Background="#FFB0C4DE" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="106" Height="29" Click="InstallBUT_Click"/>
+        <Button x:Name="openBUT" Background="#FFB0C4DE" Visibility="Collapsed" Opacity="1" Content="Open" FontSize="20"  Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="29" Click="openBUT_Click"/>
 
-        <TextBlock x:Name="statusTEXT" Visibility="Collapsed" Opacity="1" Text="Installing..." Foreground="Black" Margin="0,104,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" TextAlignment="Center" Width="154"/>
+        <TextBlock x:Name="statusTEXT" Visibility="Collapsed" Opacity="1" Text="Installeren..." Foreground="Black" Margin="0,104,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" TextAlignment="Center" Width="154"/>
 
         <ProgressBar x:Name="progress" Visibility="Collapsed" Background="White" Value="0" Maximum="100" Minimum="0" Height="20" Margin="0,134,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" />
-        <TextBlock x:Name="logoTEXT" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" TextWrapping="Wrap" TextAlignment="Center" Width="134" Text="NeoCircuit-Studios 2025"/>
+        <TextBlock x:Name="logoTEXT" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Width="134" Text="NeoCircuit-Studios 2025"/>
         
     </Grid>
 </Window>

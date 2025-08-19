@@ -66,7 +66,7 @@ namespace Simple_YTDLP.Windows.UI
             }
 
             version.Text = currentVersion;
-            loadingText.Text = "Checking for Updates....";
+            loadingText.Text = "Zoeken Naar Update....";
 
             // Paths
             string installedVersionPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
@@ -116,6 +116,10 @@ namespace Simple_YTDLP.Windows.UI
 
                 if (File.Exists(updaterPath))
                 {
+                    LogManager.LogToFile("Updater found, but downloading anyway..", "INFO");
+
+                    await DownloadAsync(urlUpdaterExe, Path.Combine(updaterDir, exeName));
+    
                     // ---- Check updater version ----
                     Version installedUpdaterVer = File.Exists(installedVersionPathUpdater) ? new Version(File.ReadAllText(installedVersionPathUpdater).Trim()) : new Version("0.0.0.0");
                     Version updateUpdaterVer = File.Exists(updateVersionPathUpdater) ? new Version(File.ReadAllText(updateVersionPathUpdater).Trim()) : new Version("0.0.0.0");

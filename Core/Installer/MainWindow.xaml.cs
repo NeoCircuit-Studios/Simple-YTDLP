@@ -56,7 +56,7 @@ namespace Installer
             if (File.Exists(filePath))
             {
                 var result = MessageBox.Show(
-                    "Simple-YTDLP is already installed... Install anyway? (this will reinstall the app)",
+                    "Simple-YTDLP is al geïnstalleerd... toch installeren? (did zal de app opnieuw installeren)",
                     "Simple-YTDLP Installer",
                     MessageBoxButton.YesNoCancel,
                     MessageBoxImage.Information);
@@ -87,13 +87,13 @@ namespace Installer
         {
             Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait;
 
-            LogManager.LogToFile("Starting installing..", "INFO");
+            LogManager.LogToFile("Starten Met Installeren..", "INFO");
 
             InstallBUT.Visibility = Visibility.Collapsed;
 
             statusTEXT.Visibility = Visibility.Visible;
 
-            statusTEXT.Text = "Downloading..";
+            statusTEXT.Text = "Downloaden..";
 
             progress.Visibility = Visibility.Visible;
 
@@ -132,53 +132,58 @@ namespace Installer
 
             LogManager.LogToFile("Downloading files from GitHub...", "INFO");
 
-            using (HttpClient client = new HttpClient())
+            async Task<bool> DownloadAsync(string url, string path, int retries = 5, int timeoutSeconds = 200)
             {
-                async Task<bool> DownloadAsync(string url, string path)
+                for (int attempt = 1; attempt <= retries; attempt++)
                 {
                     try
                     {
-                        var data = await client.GetByteArrayAsync(url);
-                        await File.WriteAllBytesAsync(path, data);
-                        LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
-                        return true;
+                        using (HttpClient client = new HttpClient())
+                        {
+                            client.Timeout = TimeSpan.FromSeconds(timeoutSeconds);
+
+                            var data = await client.GetByteArrayAsync(url);
+                            await File.WriteAllBytesAsync(path, data);
+
+                            LogManager.LogToFile($"Downloaded [{url}] to [{path}]", "INFO");
+                            return true;
+                        }
                     }
                     catch (Exception ex)
                     {
-                        LogManager.LogToFile($"Failed to download [{url}]: {ex.Message}", "ERROR");
-                        MessageBox.Show($"Failed to download: {url}\n\n{ex.Message}",
-                                        "Download Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                        return false;
+                        LogManager.LogToFile($"Attempt {attempt}/{retries} failed for [{url}]: {ex.Message}", "WARN");
+
+                        if (attempt == retries)
+                        {
+                            MessageBox.Show($"Failed to download: {url}\n\n{ex.Message}",
+                                            "Download Error, ik zal opnieuw proberen..", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return false;
+                        }
+
+                        // small delay before retry
+                        await Task.Delay(2000);
                     }
                 }
 
-                if (!await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"))) return;
-                progress.Value = 25;
-
-                if (!await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"))) return;
-                progress.Value = 50;
-
-                if (!await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"))) return;
-                progress.Value = 75;
-
-                if (!await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"))) return;
-                progress.Value = 80;
-
-                if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
-                progress.Value = 100;
+                return false;
             }
 
-            statusTEXT.Text = "Installing..";
+
+            statusTEXT.Text = "Installeren..";
 
             progress.Value = 1;
 
             LogManager.LogToFile("Installing Simple-YTDLP..", "INFO");
 
-
             string sourceFile1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
             string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
             string checkPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
             string checkPath1_1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
+
+            string ShortcutPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe.lnk");
+            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+            string startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+
 
             //string sourceFile2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
             //string extractPath2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
@@ -186,6 +191,11 @@ namespace Installer
             ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
 
             LogManager.LogToFile("installed install0.pack.guustPKG to " + extractPath1, "INFO");
+
+            File.Copy(Path.Combine(ShortcutPath), desktopPath);
+            File.Copy(Path.Combine(ShortcutPath), startMenuPath);
+
+            LogManager.LogToFile("Copied shortcut to Desktop and Start Menu.", "INFO");
 
             progress.Value = 50;
 
@@ -196,7 +206,7 @@ namespace Installer
             else
             {
                 LogManager.LogToFile("Failed to install Simple-YTDLP. Please try again.", "ERROR");
-                MessageBox.Show("Failed to install Simple-YTDLP. Please try again.", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Installatie van Simple-YTDLP is mislukt. Probeer het opnieuw.", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
@@ -212,13 +222,12 @@ namespace Installer
 
             InstallBUT.Visibility = Visibility.Collapsed;
 
-
             Mouse.OverrideCursor = null;
 
-            MessageBox.Show("Simple-YTDLP has been installed successfully!", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Simple-YTDLP is succesvol geïnstalleerd!", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Information);
 
             openBUT.Visibility = Visibility.Visible;
-
+            statusTEXT.Text = "Klaar.";
         }
 
         private void openBUT_Click(object sender, RoutedEventArgs e)
@@ -233,7 +242,7 @@ namespace Installer
             }
             else
             {
-                MessageBox.Show("Simple-YTDLP is not installed correctly.", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Simple-YTDLP is niet correct geïnstalleerd!", "Simple-YTDLP Installer", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
         }

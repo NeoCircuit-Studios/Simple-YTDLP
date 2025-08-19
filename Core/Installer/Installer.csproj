@@ -23,7 +23,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Core\APP\image\IMG_2676.PNG" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Core\APP\image\IMG_2676.PNG" />
   </ItemGroup>
 
 </Project>
