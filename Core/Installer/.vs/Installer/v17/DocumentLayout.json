@@ -100,7 +100,8 @@
               "ToolTip": "L:\\Simple-YTDLP\\Core\\Installer\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-15T22:03:19.834Z"
+              "WhenOpened": "2025-08-15T22:03:19.834Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -135,7 +136,7 @@
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "L:\\Simple-YTDLP\\Core\\Installer\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAI8AAAAAAAAAAAAwwMQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAuwLYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-15T21:55:24.024Z",
               "EditorCaption": ""

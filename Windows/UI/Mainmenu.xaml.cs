@@ -166,8 +166,8 @@ namespace Simple_YTDLP.Windows.UI
 
         bool hasEnteredValidLink0 = false;
         string linkki = "NULL";
-        string baseFolderName = "NSYTDLR_Playlist0";
-        private string currentDownloadFolder = ""; // store the actual folder used
+        string baseFolderName = "NS-SYTDLR_Playlist0";
+        private string currentDownloadFolder = ""; 
 
         bool isdone = false;
         private async void Okbut_Click(object sender, RoutedEventArgs e)
@@ -177,14 +177,20 @@ namespace Simple_YTDLP.Windows.UI
                 YTLinkTextBox.Text = linkki;
                 LogManager.LogToFile($"{linkki}");
             }
-
-            var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
+            else
             {
-                From = 1.0,
-                To = 0.0,
-                Duration = TimeSpan.FromMilliseconds(500),
-                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
-            };
+                YTLinkTextBox.Text = "Public Youtube of Youtube Music link 'https://youtu.be/xvF'";
+                LogManager.LogToFile("Invalid link entered.");
+                return;
+            }
+
+                var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
+                {
+                    From = 1.0,
+                    To = 0.0,
+                    Duration = TimeSpan.FromMilliseconds(500),
+                    FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+                };
 
             infoText.BeginAnimation(UIElement.OpacityProperty, fadeOut);
             YTLinkTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOut);

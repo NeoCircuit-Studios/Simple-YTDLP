@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "L:\\Simple-YTDLP\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\update0.pack.guustpkg.sample||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:update0.pack.guustpkg.sample||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,14 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\update0.pack.guustpkg.sample||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:update0.pack.guustpkg.sample||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\mainmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -54,30 +54,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 365,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "update0.pack.guustPKG.sample",
               "DocumentMoniker": "L:\\Simple-YTDLP\\update0.pack.guustPKG.sample",
               "RelativeDocumentMoniker": "update0.pack.guustPKG.sample",
               "ToolTip": "L:\\Simple-YTDLP\\update0.pack.guustPKG.sample",
               "RelativeToolTip": "update0.pack.guustPKG.sample",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-08-19T16:54:31.18Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Mainmenu.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Mainmenu.xaml.cs",
               "RelativeDocumentMoniker": "Windows\\UI\\Mainmenu.xaml.cs",
               "ToolTip": "L:\\Simple-YTDLP\\Windows\\UI\\Mainmenu.xaml.cs",
               "RelativeToolTip": "Windows\\UI\\Mainmenu.xaml.cs",
-              "ViewState": "AgIAABkBAAAAAAAAAAAwwEkBAABiAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAowLYAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-14T22:11:46.145Z",
               "EditorCaption": ""
@@ -108,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Splash.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Splash.xaml.cs",
               "RelativeDocumentMoniker": "Windows\\UI\\Splash.xaml.cs",
@@ -140,8 +140,7 @@
               "ToolTip": "L:\\Simple-YTDLP\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-14T21:59:52.666Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T21:59:52.666Z"
             },
             {
               "$type": "Document",
@@ -157,7 +156,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -170,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Splash.xaml",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Splash.xaml",
               "RelativeDocumentMoniker": "Windows\\UI\\Splash.xaml",

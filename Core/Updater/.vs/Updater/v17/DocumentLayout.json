@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "L:\\Simple-YTDLP\\Core\\Updater\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|solutionrelative:mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{966B1A02-BA35-451E-84B6-0C4F9541F6C1}|Updater.csproj|l:\\simple-ytdlp\\core\\updater\\scripts\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -42,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 365,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
@@ -88,7 +88,8 @@
               "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml",
               "RelativeToolTip": "App.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-16T17:50:45.201Z"
+              "WhenOpened": "2025-08-16T17:50:45.201Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -104,7 +105,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -112,29 +113,29 @@
               "RelativeToolTip": "App.xaml.cs",
               "ViewState": "AgIAAGYAAAAAAAAAAAAowIUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-16T17:47:23.292Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-16T17:47:23.292Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
               "RelativeDocumentMoniker": "MainWindow.xaml",
               "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml",
               "RelativeToolTip": "MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-16T17:43:59.364Z"
+              "WhenOpened": "2025-08-16T17:43:59.364Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "L:\\Simple-YTDLP\\Core\\Updater\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAYwOMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAMsAAAAAAAAAAAAAwOQAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-08-16T17:43:55.829Z",
               "EditorCaption": ""

@@ -117,8 +117,12 @@ namespace Updater
             string updateText = File.Exists(updateVersionPath) ? File.ReadAllText(updateVersionPath) : "0.0.0.0";
 
             string ShortcutPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe.lnk");
-            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-            string startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+            string shortcutName = "Simple-YTDLP.lnk";
+            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), shortcutName);
+            string startMenuDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+            string startMenuPath = Path.Combine(startMenuDir, shortcutName);
+
+            Directory.CreateDirectory(startMenuDir); // make sure the folder exists
 
             Version installedVer = SafeParseVersion(installedText);
             Version latestVer = SafeParseVersion(updateText);
@@ -173,8 +177,8 @@ namespace Updater
 
                 ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
 
-                File.Copy(Path.Combine(ShortcutPath), desktopPath);
-                File.Copy(Path.Combine(ShortcutPath), startMenuPath);
+                File.Copy(ShortcutPath, desktopPath, overwrite: true);
+                File.Copy(ShortcutPath, startMenuPath, overwrite: true);
 
                 LogManager.LogToFile("Copied shortcut to Desktop and Start Menu.", "INFO");
                 progress.Value = 60;
@@ -198,7 +202,7 @@ namespace Updater
                 await Task.Delay(200);
 
                 File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG"));
-                Directory.Delete(tmpDir);
+                Directory.Delete(tmpDir, recursive: true);
 
                 LogManager.LogToFile("Deleted temporary directorys..", "DEBUG");
 
@@ -222,6 +226,7 @@ namespace Updater
             {
                 LogManager.LogToFile("No update needed. Installed version is up to date.", "INFO");
                 statusTEXT.Text = "Geen update nodig.";
+                progress.Value = 100;
             }
         }
     }

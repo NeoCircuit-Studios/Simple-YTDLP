@@ -168,6 +168,18 @@ namespace Installer
                 return false;
             }
 
+            string file1 = Path.Combine(savedir1, "update0.pack.guustPKG");
+            string file2 = Path.Combine(savedir2, "bin.1.tmp.guustPKG");
+            string file3 = Path.Combine(savedir2, "bin.2.tmp.guustPKG");
+            string file4 = Path.Combine(savedir2, "bin.3.tmp.guustPKG");
+            string file5 = Path.Combine(savedir2, "bin.6.tmp.guustPKG");
+
+            // Download each file sequentially
+            if (!await DownloadAsync(url1, file1)) return;
+            if (!await DownloadAsync(url2, file2)) return;
+            if (!await DownloadAsync(url3, file3)) return;
+            if (!await DownloadAsync(url4, file4)) return;
+            if (!await DownloadAsync(url5, file5)) return;
 
             statusTEXT.Text = "Installeren..";
 
@@ -175,25 +187,28 @@ namespace Installer
 
             LogManager.LogToFile("Installing Simple-YTDLP..", "INFO");
 
-            string sourceFile1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
+            string sourceFile1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "update0.pack.guustPKG");
             string extractPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP");
             string checkPath1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
             string checkPath1_1 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe");
 
             string ShortcutPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "Simple-YTDLP.exe.lnk");
-            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-            string startMenuPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+            string shortcutName = "Simple-YTDLP.lnk";
+            string desktopPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory),shortcutName);
+            string startMenuDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonPrograms), "NeoCircuit-Studios");
+            string startMenuPath = Path.Combine(startMenuDir, shortcutName);
 
+            Directory.CreateDirectory(startMenuDir); // make sure the folder exists
 
-            //string sourceFile2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
-            //string extractPath2 = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG");
 
             ZipFile.ExtractToDirectory(sourceFile1, extractPath1, overwriteFiles: true);
 
-            LogManager.LogToFile("installed install0.pack.guustPKG to " + extractPath1, "INFO");
+            LogManager.LogToFile("installed update0.pack.guustPKG to " + extractPath1, "INFO");
 
-            File.Copy(Path.Combine(ShortcutPath), desktopPath);
-            File.Copy(Path.Combine(ShortcutPath), startMenuPath);
+            progress.Value = 30;
+
+            File.Copy(ShortcutPath, desktopPath, overwrite: true);
+            File.Copy(ShortcutPath, startMenuPath, overwrite: true);
 
             LogManager.LogToFile("Copied shortcut to Desktop and Start Menu.", "INFO");
 
@@ -210,9 +225,9 @@ namespace Installer
                 return;
             }
 
-            File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG"));
+            File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "update0.pack.guustPKG"));
 
-            LogManager.LogToFile("Deleted install0.pack.guustPKG from " + extractPath1, "INFO");
+            LogManager.LogToFile("Deleted update0.pack.guustPKG from " + extractPath1, "INFO");
 
             progress.Value = 100;
 

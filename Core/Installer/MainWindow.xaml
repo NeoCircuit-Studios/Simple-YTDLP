@@ -29,7 +29,7 @@
         <Button x:Name="InstallBUT" Visibility="Visible" Opacity="1" Content="Installeren" FontSize="20" Background="#FFB0C4DE" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="106" Height="29" Click="InstallBUT_Click"/>
         <Button x:Name="openBUT" Background="#FFB0C4DE" Visibility="Collapsed" Opacity="1" Content="Open" FontSize="20"  Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" Height="29" Click="openBUT_Click"/>
 
-        <TextBlock x:Name="statusTEXT" Visibility="Collapsed" Opacity="1" Text="Installeren..." Foreground="Black" Margin="0,104,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" TextAlignment="Center" Width="154"/>
+        <TextBlock x:Name="statusTEXT" Visibility="Collapsed" Opacity="1" Text="Installeren..." Foreground="White" Margin="0,104,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="16" TextWrapping="Wrap" TextAlignment="Center" Width="154"/>
 
         <ProgressBar x:Name="progress" Visibility="Collapsed" Background="White" Value="0" Maximum="100" Minimum="0" Height="20" Margin="0,134,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" />
         <TextBlock x:Name="logoTEXT" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="10" Foreground="White" TextWrapping="Wrap" TextAlignment="Center" Width="134" Text="NeoCircuit-Studios 2025"/>
