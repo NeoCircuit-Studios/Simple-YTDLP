@@ -138,6 +138,20 @@ namespace Simple_YTDLP
         }
     }
 
+    public static class VersionUtils
+    {
+        public static bool IsNewerVersion(string installed, string update)
+        {
+            if (Version.TryParse(installed, out Version? installedVer) &&
+                Version.TryParse(update, out Version? updateVer))
+            {
+                return updateVer > installedVer;
+            }
+            return false;
+        }
+    }
+
+
 
     public static class AppState
     {

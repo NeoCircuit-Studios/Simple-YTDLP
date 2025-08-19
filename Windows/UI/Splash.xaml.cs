@@ -109,7 +109,7 @@ namespace Simple_YTDLP.Windows.UI
             Version installedVer = File.Exists(installedVersionPath) ? new Version(File.ReadAllText(installedVersionPath).Trim()) : new Version("0.0.0.0");
             Version updateVer = File.Exists(updateVersionPath) ? new Version(File.ReadAllText(updateVersionPath).Trim()) : new Version("0.0.0.0");
 
-            if (installedVer < updateVer)
+            if (VersionUtils.IsNewerVersion(installedVer.ToString(), updateVer.ToString()))
             {
                 LogManager.LogToFile("Update available!", "INFO");
                 LogManager.LogToFile($"Local: '{installedVer}' vs Server:'{updateVer}' ", "INFO");
