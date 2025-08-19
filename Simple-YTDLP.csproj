@@ -34,6 +34,7 @@
     <None Remove="Core\ThirdParty\bin.6.tmp.guustPKG" />
     <None Remove="Core\ThirdParty\ffmpeg.exe" />
     <None Remove="Simple-YTDLP.exe.lnk" />
+    <None Remove="update0.pack.guustPKG.sample" />
   </ItemGroup>
 
   <ItemGroup>
@@ -57,6 +58,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Simple-YTDLP.exe.lnk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="update0.pack.guustPKG.sample">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

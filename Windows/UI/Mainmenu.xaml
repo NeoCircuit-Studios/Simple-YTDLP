@@ -33,11 +33,9 @@
              Value="0" />
 
 
-
-
         <TextBlock x:Name="infoText" Text="Download een YT Playlist naar MP3:"
-                   FontSize="70" Opacity="0" FontWeight="Bold" Foreground="White"
-                   VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Height="84" Width="714" RenderTransformOrigin="0.5,0.5" Margin="0,168,0,0">
+                   FontSize="50" Opacity="0" FontWeight="Bold" Foreground="White"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Height="84" Width="902" RenderTransformOrigin="0.5,0.5" Margin="0,178,0,0">
         </TextBlock>
 
 
@@ -74,7 +72,7 @@
 
 
         <Button x:Name="thxBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="Done" HorizontalAlignment="Left" VerticalAlignment="Top" Click="THXbut_Click" Margin="232,365,0,0" Width="230" Height="30"></Button>
-        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="280,0,0,96" Height="66" Width="134"></Button>
+        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="280,0,0,96" Height="66" Width="172"></Button>
 
 
         <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Collapsed" Opacity="0">

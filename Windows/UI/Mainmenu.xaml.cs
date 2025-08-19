@@ -327,13 +327,13 @@ namespace Simple_YTDLP.Windows.UI
 
         private void YTLinkTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            if (YTLinkTextBox.Text == "Public Youtube or Youtube Music link 'https://youtu.be/xvF'")
+            if (YTLinkTextBox.Text == "Public Youtube of Youtube Music link 'https://youtu.be/xvF'")
             {
                 YTLinkTextBox.Text = "";
             }
         }
 
-        string DefaultLinkText = "Public Youtube or Youtube Music link 'https://youtu.be/xvF'";
+        string DefaultLinkText = "Public Youtube of Youtube Music link 'https://youtu.be/xvF'";
         private void YTLinkTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(YTLinkTextBox.Text) && YTLinkTextBox.Text != DefaultLinkText)
