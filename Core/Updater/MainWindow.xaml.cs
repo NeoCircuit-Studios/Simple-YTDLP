@@ -62,6 +62,7 @@ namespace Updater
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string folderPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP");
             string tmpDir = Path.Combine(folderPath, "TMP");
+            string mainapplogdir = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP", "logs");
 
             string programFilesX86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string installedVersionPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
@@ -207,9 +208,11 @@ namespace Updater
 
                 File.Delete(Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "install0.pack.guustPKG"));
                 Directory.Delete(tmpDir, recursive: true);
+                Directory.Delete(mainapplogdir, recursive: true);
 
-                LogManager.LogToFile("Deleted temporary directorys..", "DEBUG");
 
+                LogManager.LogToFile($"Deleted temporary directorys and Cache.. [{tmpDir}] && [{mainapplogdir}] && [install0.pack.guustPKG]", "DEBUG");
+    
                 progress.Value = 100;
                 LogManager.LogToFile("Update finished.", "INFO");
 
@@ -221,7 +224,7 @@ namespace Updater
 
                 statusTEXT.Text = "wachten..";
 
-                await Task.Delay(1000);
+                await Task.Delay(900);
 
                 Application.Current.Shutdown();
 

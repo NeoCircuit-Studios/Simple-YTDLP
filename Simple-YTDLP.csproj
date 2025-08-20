@@ -9,6 +9,18 @@
     <UseWPF>true</UseWPF>
     <UseWindowsForms>False</UseWindowsForms>
     <ApplicationIcon>Core\APP\Icon\app.ico</ApplicationIcon>
+	<Company>NeoCircuit-Studios</Company>
+	<Product>APP</Product>
+	<FileVersion>6.0.0.4</FileVersion>
+	<AssemblyVersion>6.0.0.4</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,9 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Core\APP\sys\Downloading.png" />
-    <None Remove="Core\APP\sys\Mainmenu.png" />
-    <None Remove="Core\APP\sys\Splash.png" />
+    <None Remove="Core\APP\sys\Downloading.jpg" />
+    <None Remove="Core\APP\sys\Mainmenu.jpg" />
+    <None Remove="Core\APP\sys\Splash.jpg" />
     <None Remove="Core\Legal\LICENSE-ffmpeg.txt" />
     <None Remove="Core\Legal\LICENSE-yt-dlp.txt" />
     <None Remove="Core\ThirdParty\bin.1.tmp.guustPKG" />
@@ -66,9 +78,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Core\APP\sys\Downloading.png" />
-    <Resource Include="Core\APP\sys\Mainmenu.png" />
-    <Resource Include="Core\APP\sys\Splash.png" />
+    <Resource Include="Core\APP\sys\Downloading.jpg" />
+    <Resource Include="Core\APP\sys\Mainmenu.jpg" />
+    <Resource Include="Core\APP\sys\Splash.jpg" />
   </ItemGroup>
 
   <ItemGroup>

@@ -33,7 +33,7 @@ namespace Simple_YTDLP.Windows.UI
             LogManager.LogToFile("Reloading Mainmenu...");
 
             Background.Visibility = Visibility.Collapsed;
-            Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Mainmenu.png"));
+            Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Mainmenu.jpg"));
             InstallingText.Visibility = Visibility.Collapsed;
             ProgressBar.Visibility = Visibility.Collapsed;
             infoText.Visibility = Visibility.Collapsed;
@@ -339,7 +339,7 @@ namespace Simple_YTDLP.Windows.UI
 
             ////////////////////////////////////////////////////
             Background.BeginAnimation(UIElement.OpacityProperty, fadeOut);
-            Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.png"));
+            Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.jpg"));
             await Task.Delay(800);
 
             await Task.WhenAll(
@@ -374,7 +374,7 @@ namespace Simple_YTDLP.Windows.UI
                                             "NeoCircuit-Studios", "Simple-YTDLP", "tools");
             string ytdlpPath = Path.Combine(toolsPath, "yt-dlp.exe");
             string outputTemplate = Path.Combine(fullPath, "%(title)s.%(ext)s");
-            string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{linkki}\"";
+            string arguments = $"--no-check-formats -f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{linkki}\"";
 
             LogManager.LogToFile($"Starting= '{ytdlpPath}'");
 
@@ -500,7 +500,7 @@ namespace Simple_YTDLP.Windows.UI
             {
                 ////////////////////////////////////////////////////
                 Background.BeginAnimation(UIElement.OpacityProperty, fadeOut);
-                Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.png"));
+                Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.jpg"));
                 await Task.Delay(800);
 
                 downloadingTEXR.Text = "Playlist Updaten..";
@@ -527,7 +527,7 @@ namespace Simple_YTDLP.Windows.UI
                 );
                 string ytdlpPath = Path.Combine(toolsPath, "yt-dlp.exe");
                 string outputTemplate = Path.Combine(currentDownloadFolder, "%(title)s.%(ext)s");
-                string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{savedUrl}\"";
+                string arguments = $"--no-check-formats -f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{savedUrl}\"";
 
                 LogManager.LogToFile($"Starting= '{ytdlpPath}' with arguments: {arguments}");
 

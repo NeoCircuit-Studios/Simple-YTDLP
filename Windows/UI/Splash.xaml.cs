@@ -27,7 +27,7 @@ namespace Simple_YTDLP.Windows.UI
             this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA";
             {
                 Background.Opacity = 1.0;
-                Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Splash.png"));
+                Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Splash.jpg"));
             }
 
             this.Loaded += async (s, e) => await StartSplash(); // safer and faster
@@ -66,8 +66,7 @@ namespace Simple_YTDLP.Windows.UI
                     File.WriteAllText("version.guustGV", currentVersion);
             }
 
-            version.Text = currentVersion;
-            loadingText.Text = "Zoeken Naar Update....";
+            loadingText.Text = "Zoeken Naar Update...";
 
             // Paths
             string installedVersionPath = Path.Combine(programFilesX86, "NeoCircuit-Studios", "Simple-YTDLP", "version.guustGV");
@@ -115,9 +114,15 @@ namespace Simple_YTDLP.Windows.UI
                 LogManager.LogToFile("Update available!", "INFO");
                 LogManager.LogToFile($"Local: '{installedVer}' vs Server:'{updateVer}' ", "INFO");
 
+                await FadeIn(newversion, 300); 
+
+                newversion.Text = $"Nieuw:{updateVer}";
+                loadingText.Text = "Update Gevonden!";
+
                 if (File.Exists(updaterPath))
                 {
                     LogManager.LogToFile("Updater found, but downloading anyway..", "INFO");
+                    loadingText.Text = "Downloaden...";
 
                     await DownloadAsync(urlUpdaterExe, Path.Combine(updaterDir, exeName));
     
@@ -147,6 +152,11 @@ namespace Simple_YTDLP.Windows.UI
 
                 // ---- Start updater ----
 
+                loadingText.Text = "Wachten...";
+
+                Directory.Delete(Path.Combine(updaterDir, "Logs")); // delete old version file
+                LogManager.LogToFile("Deleting old updater logs..", "INFO");
+
                 await Task.Delay(500); // wait a bit before starting updater
 
                 LogManager.LogToFile("Starting.. " + exeName);
@@ -159,11 +169,17 @@ namespace Simple_YTDLP.Windows.UI
                 LogManager.LogToFile("Update started, exiting application.", "INFO");
                 Application.Current.Shutdown();
             }
+            else
+            {
+                loadingText.Text = "Starten..";
+            }
         }
 
 
         private async Task StartSplash()
         {
+            version.Text = VersionInfo.Version;
+
             await Task.Delay(450); // wait
 
             await Task.WhenAll(

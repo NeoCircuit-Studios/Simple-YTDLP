@@ -12,19 +12,27 @@
     <Company>NeoCircuit-Studios</Company>
     <Product>APP</Product>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SignAssembly>False</SignAssembly>
+    <FileVersion>6.0.0.4</FileVersion>
+    <AssemblyVersion>6.0.0.4</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>none</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="Core\APP\image\IMG_2676.PNG" />
-    <None Remove="Core\APP\image\IMG_2977.PNG" />
+    <None Remove="Core\APP\image\IMG_2977.jpg" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="app.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Core\APP\image\IMG_2977.PNG" />
+    <Resource Include="app.ico" />
+    <Resource Include="Core\APP\image\IMG_2977.jpg" />
   </ItemGroup>
 
 </Project>

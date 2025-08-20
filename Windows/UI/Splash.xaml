@@ -32,6 +32,13 @@
                             FontSize="20" FontWeight="Bold"
                             VerticalAlignment="Bottom" HorizontalAlignment="Left"
                             Margin="15,0,0,0" RenderTransformOrigin="0.522,0.008"/>
+            
+            <TextBlock x:Name="newversion" Opacity="0" Text="0.0.0.0" Foreground="Black"
+                            FontSize="20" FontWeight="Bold"
+                            VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                            Margin="15,0,0,32" RenderTransformOrigin="0.522,0.008"/>
+
+
 
             <TextBlock x:Name="NS" Text="Copyright © NeoCircuit-Studios 2025" Foreground="Black"
                             FontSize="20"  Opacity="0" FontWeight="Bold"

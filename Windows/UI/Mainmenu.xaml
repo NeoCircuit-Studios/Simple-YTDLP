@@ -8,7 +8,7 @@
              d:DesignHeight="600" d:DesignWidth="1090">
     <Grid>
         <Image x:Name="Background" Width="1090" Height="600" Stretch="Fill" 
-               VerticalAlignment="Center"  Opacity="1" Source="/Core/APP/sys/mainmenu.png"  HorizontalAlignment="Center" Visibility="Visible" />
+               VerticalAlignment="Center"  Opacity="1" Source="/Core/APP/sys/mainmenu.jpg"  HorizontalAlignment="Center" Visibility="Visible" />
 
         <TextBlock x:Name="InstallingText" Text="Tools Installeren.."
                    FontSize="80" Opacity="0" FontWeight="Bold" Foreground="White"

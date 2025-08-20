@@ -1,3 +1,17 @@
+6.0.0.4:
+{
+	all (Simple-YTDLP | SYTDLP-Updater | Simple-YTDLP-Installer):
+	- optimized storage usage and memory usage
+	- made updating and installing 1.2x faster 
+
+	SYTDLP-Updater:
+	- now the app will delete the logs or Simple-YTDLP after the update is done
+
+	Simple-YTDLP:
+	- improved the starting info process
+	- now removes the logs from SYTDLP-Updater during the update
+}
+
 6.0.0.3:
 {
 	Simple-YTDLP:
@@ -25,4 +39,9 @@
 	SYTDLP-Updater:
 	- added a background
 	- made the update process ~14.9x faster
+}
+
+6.0.0.0 and older:
+{
+	// testing and development versions
 }

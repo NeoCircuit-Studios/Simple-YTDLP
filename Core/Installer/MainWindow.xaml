@@ -14,7 +14,7 @@
     <Grid>
 
         <Image x:Name="Background" Width="1090" Height="600" Stretch="None" 
-               VerticalAlignment="Center" Source="/Core/APP/image/IMG_2676.PNG" Opacity="1"  HorizontalAlignment="Center" Visibility="Visible" />
+               VerticalAlignment="Center" Source="/Core/APP/image/IMG_2676.jpg" Opacity="1"  HorizontalAlignment="Center" Visibility="Visible" />
 
         <TextBlock x:Name="infoTeXT" Visibility="Visible" Opacity="1" Foreground="White" Text="Simple-YTDLP:" Background="Transparent"  FontSize="25" Margin="78,32,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
