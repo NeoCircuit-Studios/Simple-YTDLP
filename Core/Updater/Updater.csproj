@@ -16,10 +16,15 @@
 
   <ItemGroup>
     <None Remove="Core\APP\image\IMG_2676.PNG" />
+    <None Remove="Core\APP\image\IMG_2977.PNG" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="app.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Core\APP\image\IMG_2977.PNG" />
   </ItemGroup>
 
 </Project>

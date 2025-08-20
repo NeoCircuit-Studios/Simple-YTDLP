@@ -28,6 +28,7 @@ namespace Updater
                     statusTEXT.Visibility = Visibility.Visible;
                     progress.Visibility = Visibility.Visible;
                     Background.Visibility = Visibility.Visible;
+                    Background.Opacity = 1;
 
                     statusTEXT.Text = "Laden..";
                     LogManager.LogToFile("Loading...");
@@ -46,6 +47,7 @@ namespace Updater
             statusTEXT.Visibility = Visibility.Visible;
             progress.Visibility = Visibility.Visible;
             Background.Visibility = Visibility.Visible;
+            Background.Opacity= 1;
 
             statusTEXT.Text = "Laden..";
 

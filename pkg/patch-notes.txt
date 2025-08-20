@@ -1,3 +1,9 @@
+6.0.0.2:
+{
+	SYTDLP-Updater:
+	- fixed background not showing
+}
+
 6.0.0.1: 
 {
 	Simple-YTDLP:
@@ -12,5 +18,5 @@
 
 	SYTDLP-Updater:
 	- added a background
-	- made the update process 1.5x faster
+	- made the update process ~5x faster
 }
