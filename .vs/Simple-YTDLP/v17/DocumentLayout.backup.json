@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:pkg\\patch-notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\splash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\splash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\splash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|solutionrelative:windows\\ui\\mainmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C4C6949-3BE0-4D67-8DDB-D66F74DBB087}|Simple-YTDLP.csproj|l:\\simple-ytdlp\\pkg\\todo||{8B382828-6202-11D1-8870-0000F87579D2}",
@@ -93,15 +93,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Mainmenu.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Mainmenu.xaml.cs",
               "RelativeDocumentMoniker": "Windows\\UI\\Mainmenu.xaml.cs",
               "ToolTip": "L:\\Simple-YTDLP\\Windows\\UI\\Mainmenu.xaml.cs",
               "RelativeToolTip": "Windows\\UI\\Mainmenu.xaml.cs",
-              "ViewState": "AgIAAGQBAAAAAAAAAAAuwHkBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAmwHgBAAByAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-08-20T07:51:12.212Z"
+              "WhenOpened": "2025-08-20T07:51:12.212Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -117,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Splash.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Splash.xaml.cs",
               "RelativeDocumentMoniker": "Windows\\UI\\Splash.xaml.cs",
@@ -135,7 +136,7 @@
               "RelativeDocumentMoniker": "pkg\\patch-notes.txt",
               "ToolTip": "L:\\Simple-YTDLP\\pkg\\patch-notes.txt",
               "RelativeToolTip": "pkg\\patch-notes.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
               "WhenOpened": "2025-08-20T06:59:15.775Z",
               "EditorCaption": ""
@@ -154,7 +155,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "L:\\Simple-YTDLP\\App.xaml.cs",
               "RelativeDocumentMoniker": "App.xaml.cs",
@@ -189,15 +190,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Splash.xaml",
               "DocumentMoniker": "L:\\Simple-YTDLP\\Windows\\UI\\Splash.xaml",
               "RelativeDocumentMoniker": "Windows\\UI\\Splash.xaml",
               "ToolTip": "L:\\Simple-YTDLP\\Windows\\UI\\Splash.xaml",
               "RelativeToolTip": "Windows\\UI\\Splash.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-08-14T21:55:34.825Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-08-14T21:55:34.825Z"
             },
             {
               "$type": "Document",

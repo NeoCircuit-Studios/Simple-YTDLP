@@ -1,3 +1,9 @@
+6.0.0.3:
+{
+	Simple-YTDLP:
+	-fixed a bug when it would not download a playlist
+}
+
 6.0.0.2:
 {
 	SYTDLP-Updater:
@@ -18,5 +24,5 @@
 
 	SYTDLP-Updater:
 	- added a background
-	- made the update process ~5x faster
+	- made the update process ~14.9x faster
 }

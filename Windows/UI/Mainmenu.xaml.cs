@@ -374,7 +374,7 @@ namespace Simple_YTDLP.Windows.UI
                                             "NeoCircuit-Studios", "Simple-YTDLP", "tools");
             string ytdlpPath = Path.Combine(toolsPath, "yt-dlp.exe");
             string outputTemplate = Path.Combine(fullPath, "%(title)s.%(ext)s");
-            string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{savedUrl}\"";
+            string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{linkki}\"";
 
             LogManager.LogToFile($"Starting= '{ytdlpPath}'");
 
