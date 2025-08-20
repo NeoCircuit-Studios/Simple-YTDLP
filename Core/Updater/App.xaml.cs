@@ -14,7 +14,7 @@ namespace Updater
     public partial class App : Application
     {
         public static bool _willshutthefuckup = false;
-        public static string RunningTMPfilename = "Simple-YTDLP-UPDATER.guustTMP";
+        public static string RunningTMPfilename = "Simple-YTDLP-UPDATER-V6.guustTMP";
         private FileStream? _lockFileStream; // nullable to allow null assignment
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)

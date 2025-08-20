@@ -27,6 +27,7 @@ namespace Updater
                     UpdateBUT.Visibility = Visibility.Collapsed;
                     statusTEXT.Visibility = Visibility.Visible;
                     progress.Visibility = Visibility.Visible;
+                    Background.Visibility = Visibility.Visible;
 
                     statusTEXT.Text = "Laden..";
                     LogManager.LogToFile("Loading...");
@@ -44,6 +45,7 @@ namespace Updater
             UpdateBUT.Visibility = Visibility.Collapsed;
             statusTEXT.Visibility = Visibility.Visible;
             progress.Visibility = Visibility.Visible;
+            Background.Visibility = Visibility.Visible;
 
             statusTEXT.Text = "Laden..";
 
@@ -162,13 +164,13 @@ namespace Updater
 
                     if (!await DownloadAsync(url1, Path.Combine(savedir1, "install0.pack.guustPKG"))) return;
                     progress.Value = 25;
-                    if (!await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"))) return;
+                    //if (!await DownloadAsync(url2, Path.Combine(savedir2, "bin.1.tmp.guustPKG"))) return;
                     progress.Value = 30;
-                    if (!await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"))) return;
+                    //if (!await DownloadAsync(url3, Path.Combine(savedir2, "bin.2.tmp.guustPKG"))) return;
                     progress.Value = 35;
-                    if (!await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"))) return;
+                    //if (!await DownloadAsync(url4, Path.Combine(savedir2, "bin.3.tmp.guustPKG"))) return;
                     progress.Value = 40;
-                    if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
+                    //if (!await DownloadAsync(url5, Path.Combine(savedir2, "bin.6.tmp.guustPKG"))) return;
                     progress.Value = 45;
                 }
                 statusTEXT.Text = "Installeren..";
@@ -217,7 +219,7 @@ namespace Updater
 
                 statusTEXT.Text = "wachten..";
 
-                await Task.Delay(1500);
+                await Task.Delay(1000);
 
                 Application.Current.Shutdown();
 

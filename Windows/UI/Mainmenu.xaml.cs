@@ -1,12 +1,12 @@
 ﻿using APPLogManager;
-using System;
+using System.Collections.Concurrent;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Windows.Foundation.Diagnostics;
+using System.Windows.Threading;
 
 
 namespace Simple_YTDLP.Windows.UI
@@ -19,12 +19,53 @@ namespace Simple_YTDLP.Windows.UI
         public Mainmenu()
         {
             InitializeComponent();
+            this.Loaded += Mainmenu_Loaded; // safe async entrypoint
+        }
 
-            Installtools();
+        private async void Mainmenu_Loaded(object sender, RoutedEventArgs e)
+        {
+            await Installtools();
+        }
+
+
+        private async Task Reload()
+        {
+            LogManager.LogToFile("Reloading Mainmenu...");
+
+            Background.Visibility = Visibility.Collapsed;
+            Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Mainmenu.png"));
+            InstallingText.Visibility = Visibility.Collapsed;
+            ProgressBar.Visibility = Visibility.Collapsed;
+            infoText.Visibility = Visibility.Collapsed;
+            YTLinkTextBox.Visibility = Visibility.Collapsed;
+            downloadingTEXR.Visibility = Visibility.Collapsed;
+            okBUt.Visibility = Visibility.Collapsed;
+            thxBUt.Visibility = Visibility.Collapsed;
+            openfolderBUT.Visibility = Visibility.Collapsed;
+            LogTextBox.Visibility = Visibility.Collapsed;
+            LoadingIcon.Visibility = Visibility.Collapsed;
+            VraagText.Visibility = Visibility.Collapsed;
+            MP3BUt.Visibility = Visibility.Collapsed;
+            MP4BUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+
+            okBUt.IsEnabled = true;
+            hasEnteredValidLink0 = false;
+            updatePlaylistBUt.IsEnabled = true;
+            linkki = "NULL";
+            YTLinkTextBox.Text = DefaultLinkText;
+            downloadingTEXR.Text = "Playlist Downloaden..";
+
+            await Task.Delay(1000); // give UI time to refresh
+
+            await Installtools();
         }
 
         private async Task Installtools()
         {
+
+            Background.Visibility = Visibility.Visible;
+
             string extractPath = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
                 "NeoCircuit-Studios", "Simple-YTDLP", "tools"
@@ -143,7 +184,9 @@ namespace Simple_YTDLP.Windows.UI
             return;
         }
 
-
+        bool isupdatingplaylistcool = false;
+        string savedFolder = "";
+        string savedUrl = "";
         private async Task ready()
         {
             var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
@@ -156,49 +199,147 @@ namespace Simple_YTDLP.Windows.UI
 
             InstallingText.BeginAnimation(UIElement.OpacityProperty, fadeOut);
             ProgressBar.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+            string fullConfigPath = Path.Combine(configPath, configname);
+
+            savedFolder = "";
+            savedUrl = "";
+            isupdatingplaylistcool = false;
+
+            if (File.Exists(fullConfigPath))
+            {
+                try
+                {
+                    var lines = File.ReadAllLines(fullConfigPath);
+                    if (lines.Length >= 2)
+                    {
+                        string folderCandidate = lines[0];
+                        string urlCandidate = lines[1];
+
+                        if (Directory.Exists(folderCandidate))
+                        {
+                            savedFolder = folderCandidate;
+                        }
+                        else
+                        {
+                            LogManager.LogToFile($"Saved folder does not exist: {folderCandidate}");
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(urlCandidate) && urlCandidate != DefaultLinkText)
+                        {
+                            savedUrl = urlCandidate;
+                        }
+                        else
+                        {
+                            LogManager.LogToFile($"Saved URL is invalid: {urlCandidate}");
+                        }
+
+                        if (!string.IsNullOrEmpty(savedFolder) && !string.IsNullOrEmpty(savedUrl))
+                        {
+                            isupdatingplaylistcool = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogManager.LogToFile($"Failed to read config: {ex.Message}");
+                }
+            }
+            else
+            {
+                LogManager.LogToFile("Config file not found.");
+            }
 
             await Task.WhenAll(
                 FadeIn(infoText, 0, 300),
                 FadeIn(YTLinkTextBox, 0, 300),
                 FadeIn(okBUt, 0, 300)
             );
+
+            if (isupdatingplaylistcool)
+            {
+                await FadeIn(updatePlaylistBUt);
+                LogManager.LogToFile("Update button enabled (valid playlist found).");
+            }
+            else
+            {
+                LogManager.LogToFile("No valid saved playlist, update button will not be shown.");
+                updatePlaylistBUt.Visibility = Visibility.Collapsed;
+                updatePlaylistBUt.IsEnabled = false;
+            }
         }
+
+        string configPath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            "NeoCircuit-Studios", "Simple-YTDLP");
+        string configname = "lastfolder.txt";
+
 
         bool hasEnteredValidLink0 = false;
         string linkki = "NULL";
         string baseFolderName = "NS-SYTDLR_Playlist0";
         private string currentDownloadFolder = ""; 
 
-        bool isdone = false;
+        bool isDone = false;
+
+
         private async void Okbut_Click(object sender, RoutedEventArgs e)
         {
-            if (hasEnteredValidLink0 == true)
+            if (!hasEnteredValidLink0)
             {
-                YTLinkTextBox.Text = linkki;
-                LogManager.LogToFile($"{linkki}");
-            }
-            else
-            {
-                YTLinkTextBox.Text = "Public Youtube of Youtube Music link 'https://youtu.be/xvF'";
+                YTLinkTextBox.Text = DefaultLinkText;
                 LogManager.LogToFile("Invalid link entered.");
                 return;
             }
 
-                var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
-                {
-                    From = 1.0,
-                    To = 0.0,
-                    Duration = TimeSpan.FromMilliseconds(500),
-                    FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
-                };
+            YTLinkTextBox.Text = linkki;
 
+            var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromMilliseconds(500),
+                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+            };
             infoText.BeginAnimation(UIElement.OpacityProperty, fadeOut);
             YTLinkTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOut);
             okBUt.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+
+            {
+                //was a bug : did not hide the input UI when clicking OK
+                okBUt.Visibility = Visibility.Collapsed;
+                okBUt.IsEnabled = false;
+            }
+            infoText.Visibility = Visibility.Collapsed;
+            YTLinkTextBox.Visibility = Visibility.Collapsed;
+            okBUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+
+            await Task.WhenAll(
+                FadeIn(VraagText, 0, 300),
+                FadeIn(MP3BUt, 0, 300),
+                FadeIn(MP4BUt, 0, 300)
+            );
+            MP4BUt.IsEnabled = false; // Disable MP4 button for now                                       !!!!!       
+        }
+
+        private async void MP3but_Click(object sender, EventArgs e)
+        {
+            var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromMilliseconds(500),
+                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+            };
+
+            VraagText.Visibility = Visibility.Collapsed;
+            MP3BUt.Visibility = Visibility.Collapsed;
+            MP4BUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+
+            ////////////////////////////////////////////////////
             Background.BeginAnimation(UIElement.OpacityProperty, fadeOut);
-
             Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.png"));
-
             await Task.Delay(800);
 
             await Task.WhenAll(
@@ -209,31 +350,31 @@ namespace Simple_YTDLP.Windows.UI
             );
 
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
-
             string folderName = baseFolderName;
             string fullPath = Path.Combine(desktopPath, folderName);
-
             int counter = 1;
             while (Directory.Exists(fullPath))
             {
-                folderName = baseFolderName + counter; // "NSYTDLR_Playlist01", "NSYTDLR_Playlist02", ...
+                folderName = $"{baseFolderName}{counter}";
                 fullPath = Path.Combine(desktopPath, folderName);
                 counter++;
             }
-
             Directory.CreateDirectory(fullPath);
-            currentDownloadFolder = fullPath; 
+            currentDownloadFolder = fullPath;
             LogManager.LogToFile("Folder created: " + fullPath);
 
+            Directory.CreateDirectory(configPath);
+            string fullConfigPath = Path.Combine(configPath, configname);
 
+            // Save both folder and URL
+            File.WriteAllText(fullConfigPath, $"{currentDownloadFolder}{Environment.NewLine}{linkki}");
+            LogManager.LogToFile("Config file updated: " + fullConfigPath);
 
-            string toolsPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                "NeoCircuit-Studios", "Simple-YTDLP", "tools"
-            );
+            string toolsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                                            "NeoCircuit-Studios", "Simple-YTDLP", "tools");
             string ytdlpPath = Path.Combine(toolsPath, "yt-dlp.exe");
-            string outputTemplate = Path.Combine(fullPath, "%(title)s.%(ext)s"); 
-            string arguments = $"-x --audio-format mp3 -o \"{outputTemplate}\" \"{linkki}\"";
+            string outputTemplate = Path.Combine(fullPath, "%(title)s.%(ext)s");
+            string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{savedUrl}\"";
 
             LogManager.LogToFile($"Starting= '{ytdlpPath}'");
 
@@ -246,76 +387,251 @@ namespace Simple_YTDLP.Windows.UI
                 RedirectStandardError = true,
                 CreateNoWindow = true
             };
+            Process proc = new Process { StartInfo = psi, EnableRaisingEvents = true };
 
-
-            Process proc = new Process();
-            proc.StartInfo = psi;
-            proc.EnableRaisingEvents = true;
-
-            proc.OutputDataReceived += (sender, e) =>
+            var logQueue = new ConcurrentQueue<string>();
+            DispatcherTimer logTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(200) };
+            logTimer.Tick += (s, evt) =>
             {
-                if (!string.IsNullOrEmpty(e.Data))
+                while (logQueue.TryDequeue(out var line))
                 {
-                    //gets the output of yt-dlp.exe to LogTextBox
-                    Dispatcher.Invoke(() =>
-                    {
-                        LogTextBox.Text += e.Data + Environment.NewLine;
-                        LogTextBox.ScrollToEnd();
-                    });
-                    LogManager.LogToFile(e.Data, "INFO");
+                    LogTextBox.AppendText(line + Environment.NewLine);
+                    LogTextBox.ScrollToEnd();
+                }
+            };
+            logTimer.Start();
 
-                    var match = System.Text.RegularExpressions.Regex.Match(e.Data, @"(\d{1,3}\.\d)%");
-                    if (match.Success)
+            proc.OutputDataReceived += (s, evt) =>
+            {
+                if (!string.IsNullOrEmpty(evt.Data))
+                {
+                    logQueue.Enqueue(evt.Data);
+                    LogManager.LogToFile(evt.Data, "INFO");
+
+                    var match = System.Text.RegularExpressions.Regex.Match(evt.Data, @"(\d{1,3}\.\d)%");
+                    if (match.Success && double.TryParse(match.Groups[1].Value, out double progress))
                     {
-                        double progress = double.Parse(match.Groups[1].Value);
-                        Dispatcher.Invoke(() => ProgressBar.Value = progress);
+                        Dispatcher.BeginInvoke(() => ProgressBar.Value = progress);
                     }
                 }
             };
 
-            proc.ErrorDataReceived += (sender, e) =>
+            proc.ErrorDataReceived += (s, evt) =>
             {
-                if (!string.IsNullOrEmpty(e.Data))
+                if (!string.IsNullOrEmpty(evt.Data))
                 {
-                    Dispatcher.Invoke(() =>
-                    {
-                        LogTextBox.Text += "ERROR: " + e.Data + Environment.NewLine;
-                        LogTextBox.ScrollToEnd();
-                    });
-                    LogManager.LogToFile(e.Data, "ERROR");
+                    logQueue.Enqueue("ERROR: " + evt.Data);
+                    LogManager.LogToFile(evt.Data, "ERROR");
                 }
+            };
+
+            proc.Exited += (s, evt) =>
+            {
+                isDone = true;
+                Dispatcher.Invoke(() =>
+                {
+                    LogTextBox.AppendText("Download finished!" + Environment.NewLine);
+                    LogTextBox.ScrollToEnd();
+                    LogManager.LogToFile("Download finished.", "INFO");
+
+                    //ProgressBar.Value = 100;
+                });
             };
 
             proc.Start();
             proc.BeginOutputReadLine();
             proc.BeginErrorReadLine();
-            await Task.Run(() => proc.WaitForExit()); // ensures process fully exits
+            await Task.Run(() => proc.WaitForExit());
+
+            logTimer.Stop();
+
+            Dispatcher.BeginInvoke(() =>
             {
-                Dispatcher.Invoke(() =>
+                LogTextBox.AppendText("Download finished!" + Environment.NewLine);
+                isDone = true;
+            });
+
+            if (isDone)
+            {
+                var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
                 {
-                    LogTextBox.Text += "Download finished!" + Environment.NewLine;
-                    isdone = true;
+                    From = 1.0,
+                    To = 0.0,
+                    Duration = TimeSpan.FromMilliseconds(500),
+                    FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+                };
+                LoadingIcon.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+                LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
 
-                });
-            };
-
-            if (isdone == true)
-            {
                 await Task.WhenAll(
                     FadeIn(thxBUt, 0, 300),
-                    FadeIn(openfolderBUT, 0,300)
+                    FadeIn(openfolderBUT, 0, 300)
                 );
+            }
+        }
+        private async void MP4but_Click(object sender, EventArgs e)
+        {
 
-                LoadingIcon.BeginAnimation(UIElement.OpacityProperty, fadeOut);
-                LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+        }
+        private async void updateplaylistbut_Click(object sender, EventArgs e)
+        {
+            var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromMilliseconds(500),
+                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+            };
+
+            VraagText.Visibility = Visibility.Collapsed;
+            MP3BUt.Visibility = Visibility.Collapsed;
+            MP4BUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+            infoText.Visibility = Visibility.Collapsed;
+            YTLinkTextBox.Visibility = Visibility.Collapsed;
+            okBUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+
+            okBUt.IsEnabled = false;
+            updatePlaylistBUt.IsEnabled = false;
+
+
+            if (!string.IsNullOrEmpty(savedFolder) && !string.IsNullOrEmpty(savedUrl))
+            {
+                ////////////////////////////////////////////////////
+                Background.BeginAnimation(UIElement.OpacityProperty, fadeOut);
+                Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.png"));
+                await Task.Delay(800);
+
+                downloadingTEXR.Text = "Playlist Updaten..";
+
+                await Task.WhenAll(
+                    FadeIn(Background, 0, 300),
+                    FadeIn(downloadingTEXR, 0, 300),
+                    FadeIn(LogTextBox, 0, 300),
+                    FadeIn(LoadingIcon, 0, 300)
+                );
+  
+                string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string fullPath = Path.Combine(desktopPath, savedFolder);
+                Directory.CreateDirectory(fullPath);
+
+                // Use savedFolder and savedUrl instead of creating new ones
+                currentDownloadFolder = savedFolder;
+                LogManager.LogToFile("Using folder from config: " + currentDownloadFolder);
+                LogManager.LogToFile("Using URL from config: " + savedUrl);
+
+                string toolsPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                    "NeoCircuit-Studios", "Simple-YTDLP", "tools"
+                );
+                string ytdlpPath = Path.Combine(toolsPath, "yt-dlp.exe");
+                string outputTemplate = Path.Combine(currentDownloadFolder, "%(title)s.%(ext)s");
+                string arguments = $"-f bestaudio --extract-audio --audio-format mp3 -o \"{outputTemplate}\" \"{savedUrl}\"";
+
+                LogManager.LogToFile($"Starting= '{ytdlpPath}' with arguments: {arguments}");
+
+                ProcessStartInfo psi = new ProcessStartInfo
+                {
+                    FileName = ytdlpPath,
+                    Arguments = arguments,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                };
+
+                Process proc = new Process { StartInfo = psi, EnableRaisingEvents = true };
+
+                var logQueue = new ConcurrentQueue<string>();
+                DispatcherTimer logTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(200) };
+                logTimer.Tick += (s, evt) =>
+                {
+                    while (logQueue.TryDequeue(out var line))
+                    {
+                        LogTextBox.AppendText(line + Environment.NewLine);
+                        LogTextBox.ScrollToEnd();
+                    }
+                };
+                logTimer.Start();
+
+                proc.OutputDataReceived += (s, evt) =>
+                {
+                    if (!string.IsNullOrEmpty(evt.Data))
+                    {
+                        logQueue.Enqueue(evt.Data);
+                        LogManager.LogToFile(evt.Data, "INFO");
+
+                        var match = System.Text.RegularExpressions.Regex.Match(evt.Data, @"(\d{1,3}\.\d)%");
+                        if (match.Success && double.TryParse(match.Groups[1].Value, out double progress))
+                        {
+                            Dispatcher.BeginInvoke(() => ProgressBar.Value = progress);
+                        }
+                    }
+                };
+
+                proc.ErrorDataReceived += (s, evt) =>
+                {
+                    if (!string.IsNullOrEmpty(evt.Data))
+                    {
+                        logQueue.Enqueue("ERROR: " + evt.Data);
+                        LogManager.LogToFile(evt.Data, "ERROR");
+                    }
+                };
+
+                proc.Exited += (s, evt) =>
+                {
+                    isDone = true;
+                    Dispatcher.Invoke(() =>
+                    {
+                        LogTextBox.AppendText("Download finished!" + Environment.NewLine);
+                        LogTextBox.ScrollToEnd();
+                        LogManager.LogToFile("Download finished.", "INFO");
+                    });
+                };
+
+                proc.Start();
+                proc.BeginOutputReadLine();
+                proc.BeginErrorReadLine();
+                await Task.Run(() => proc.WaitForExit());
+
+                logTimer.Stop();
+
+                Dispatcher.BeginInvoke(() =>
+                {
+                    LogTextBox.AppendText("Download finished!" + Environment.NewLine);
+                    isDone = true;
+                });
+
+                if (isDone)
+                {
+                    var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
+                    {
+                        From = 1.0,
+                        To = 0.0,
+                        Duration = TimeSpan.FromMilliseconds(500),
+                        FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+                    };
+                    LoadingIcon.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+                    LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+
+                    await Task.WhenAll(
+                        FadeIn(thxBUt, 0, 300),
+                        FadeIn(openfolderBUT, 0, 300)
+                    );
+                }
+            }
+            else
+            {
+                LogManager.LogToFile("Saved folder or URL is not valid. Cannot start download.");
             }
         }
 
-
         private async void THXbut_Click(object sender, EventArgs e)
         {
-            LogManager.LogToFile("user stopped the app");
-            Application.Current.Shutdown();
+            //LogManager.LogToFile("user stopped the app");
+            //Application.Current.Shutdown();
+            await Reload();
         }
 
         private async void Folderopen_Click(object sender, EventArgs e)
@@ -345,7 +661,7 @@ namespace Simple_YTDLP.Windows.UI
             if (!string.IsNullOrWhiteSpace(YTLinkTextBox.Text) && YTLinkTextBox.Text != DefaultLinkText)
             {
                 hasEnteredValidLink0 = true;
-                linkki = YTLinkTextBox.Text; // <-- save the actual link here
+                linkki = YTLinkTextBox.Text;
 
             }
             else

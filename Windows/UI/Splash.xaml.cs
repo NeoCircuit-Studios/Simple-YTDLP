@@ -33,6 +33,7 @@ namespace Simple_YTDLP.Windows.UI
             this.Loaded += async (s, e) => await StartSplash(); // safer and faster
 
         }
+
         private async Task Loading()
         {
             LogManager.LogToFile("----------Start--------------", "INFO");
@@ -146,7 +147,7 @@ namespace Simple_YTDLP.Windows.UI
 
                 // ---- Start updater ----
 
-                await Task.Delay(1000); // wait a bit before starting updater
+                await Task.Delay(500); // wait a bit before starting updater
 
                 LogManager.LogToFile("Starting.. " + exeName);
                 Process.Start(new ProcessStartInfo
@@ -163,7 +164,7 @@ namespace Simple_YTDLP.Windows.UI
 
         private async Task StartSplash()
         {
-            await Task.Delay(500); // wait
+            await Task.Delay(450); // wait
 
             await Task.WhenAll(
                 FadeIn(NS, 300),
@@ -178,7 +179,7 @@ namespace Simple_YTDLP.Windows.UI
             );
 
             await Loading();
-            await Task.Delay(4500); // wait before fade out //loading time
+            await Task.Delay(2000); // wait before fade out //loading time
 
 
             version.Visibility = Visibility.Collapsed;
@@ -202,29 +203,9 @@ namespace Simple_YTDLP.Windows.UI
 
             Background.Opacity = 0.0;
 
-            await Task.Delay(800); //load lol
+            await Task.Delay(400); //load lol
 
             Mouse.OverrideCursor = null; // reset cursor to default // Very important!!!!
-
-            /*
-                var basePath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
-                    "NeoCircuit-Studios", "NeoAppFlixToolKit", "Saved"
-                );
-
-                var userFilePath = Path.Combine(basePath, "user.guustGSF");
-
-                if (File.Exists(userFilePath))
-                {
-                    // skip the main menu if user file exists
-                } 
-                else
-                {
-                    // Show the main menu to set username
-                }
-
-            */
-
 
             Mainmenu mainmenu = new Mainmenu(); // filename, Disclaimer is the variablename, Disclaimer is the class name
 

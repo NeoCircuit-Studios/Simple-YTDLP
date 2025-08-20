@@ -1,0 +1,16 @@
+6.0.0.1: 
+{
+	Simple-YTDLP:
+	- fix a bug where the app freezes when downloading a big playlist
+	- fix a bug that a button was still clickable after it was removed
+	- now the app will close yt-dlp process when the app is closed
+	- now the app will not quit when you press the Done button instead it will ask for playlist again
+	- fixed some text still being in english
+	- made the app 2x faster in startup (if no update is available)
+	- added a way to update your previous playlist
+	- fixed a bug where yt-dlp would hang at ([info] Testing format 234) when downloading a mp3 file 
+
+	SYTDLP-Updater:
+	- added a background
+	- made the update process 1.5x faster
+}

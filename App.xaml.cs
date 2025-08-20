@@ -1,4 +1,5 @@
 ﻿using APPLogManager;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -12,7 +13,7 @@ namespace Simple_YTDLP
     public partial class App : System.Windows.Application
     {
         public static bool _willshutthefuckup = false;
-        public static string RunningTMPfilename = "Simple-YTDLP.guustTMP";
+        public static string RunningTMPfilename = "Simple-YTDLP-V6.guustTMP";
         private FileStream? _lockFileStream; // nullable to allow null assignment
 
         private void OnWindowClosing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -22,7 +23,6 @@ namespace Simple_YTDLP
                 _lockFileStream.Close();
                 _lockFileStream.Dispose();
                 _lockFileStream = null;
-
                 try
                 {
                     File.Delete(Path.Combine(Path.GetTempPath(), RunningTMPfilename));
@@ -33,7 +33,23 @@ namespace Simple_YTDLP
                     LogManager.LogToFile($"Failed to delete running file on exit: {ex.Message}", "ERROR");
                 }
             }
+
+            // --- Kill yt-dlp.exe if still running ---
+            try
+            {
+                foreach (var proc in Process.GetProcessesByName("yt-dlp"))
+                {
+                    proc.Kill();   // force kill
+                    proc.WaitForExit();
+                    LogManager.LogToFile($"Killed yt-dlp.exe (PID {proc.Id})", "INFO");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogToFile($"Failed to kill yt-dlp.exe: {ex.Message}", "ERROR");
+            }
         }
+
         protected override void OnStartup(StartupEventArgs e)
         {
 
@@ -42,7 +58,6 @@ namespace Simple_YTDLP
 
             string tempFilePath = Path.Combine(Path.GetTempPath(), RunningTMPfilename);
 
-            // Set shutdown mode to shut down when the main window closes
             this.ShutdownMode = ShutdownMode.OnMainWindowClose;
 
             try
@@ -150,8 +165,6 @@ namespace Simple_YTDLP
             return false;
         }
     }
-
-
 
     public static class AppState
     {
