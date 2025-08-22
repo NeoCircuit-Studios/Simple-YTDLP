@@ -179,7 +179,7 @@ namespace Simple_YTDLP.Windows.UI
                 loadingText.Text = "Wachten...";
 
                 //Directory.Delete(Path.Combine(updaterDir, "Logs")); // delete old version file
-                LogManager.LogToFile("Deleting old updater logs..", "INFO");
+                //LogManager.LogToFile("Deleting old updater logs..", "INFO");
 
                 await Task.Delay(500); // wait a bit before starting updater
 
