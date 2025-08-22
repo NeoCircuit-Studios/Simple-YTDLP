@@ -178,7 +178,7 @@ namespace Simple_YTDLP.Windows.UI
                 this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA - Waiting...";
                 loadingText.Text = "Wachten...";
 
-                Directory.Delete(Path.Combine(updaterDir, "Logs")); // delete old version file
+                //Directory.Delete(Path.Combine(updaterDir, "Logs")); // delete old version file
                 LogManager.LogToFile("Deleting old updater logs..", "INFO");
 
                 await Task.Delay(500); // wait a bit before starting updater
@@ -248,7 +248,6 @@ namespace Simple_YTDLP.Windows.UI
             await Task.Delay(400); //load lol
 
             this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA";
-
 
             Mouse.OverrideCursor = null; // reset cursor to default // Very important!!!!
 
