@@ -1,3 +1,12 @@
+6.0.0.5:
+{
+	Simple-YTDLP:
+	- added better debugging
+	- improved some colours on some screens
+	- improved the animation on all screens
+	- made title bar a bit more interactive
+}
+
 6.0.0.4:
 {
 	all (Simple-YTDLP | SYTDLP-Updater | Simple-YTDLP-Installer):

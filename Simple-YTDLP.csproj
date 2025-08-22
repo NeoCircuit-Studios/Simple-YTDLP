@@ -11,8 +11,8 @@
     <ApplicationIcon>Core\APP\Icon\app.ico</ApplicationIcon>
 	<Company>NeoCircuit-Studios</Company>
 	<Product>APP</Product>
-	<FileVersion>6.0.0.4</FileVersion>
-	<AssemblyVersion>6.0.0.4</AssemblyVersion>
+	<FileVersion>6.0.0.5</FileVersion>
+	<AssemblyVersion>6.0.0.5</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

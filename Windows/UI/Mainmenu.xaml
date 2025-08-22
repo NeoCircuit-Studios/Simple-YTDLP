@@ -5,14 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Simple_YTDLP.Windows.UI"
              mc:Ignorable="d" 
+             Background="Aquamarine"
              d:DesignHeight="600" d:DesignWidth="1090">
     <Grid>
         <Image x:Name="Background" Width="1090" Height="600" Stretch="Fill" 
                VerticalAlignment="Center"  Opacity="1" Source="/Core/APP/sys/mainmenu.jpg"  HorizontalAlignment="Center" Visibility="Visible" />
 
         <TextBlock x:Name="InstallingText" Text="Tools Installeren.."
-                   FontSize="80" Opacity="0" FontWeight="Bold" Foreground="White"
-                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" Height="118" Width="622" RenderTransformOrigin="0.5,0.5" Margin="260,236,0,0">
+                   FontSize="80" Opacity="1" FontWeight="Bold" Foreground="White"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Visible" Height="118" Width="622" RenderTransformOrigin="0.5,0.5" Margin="260,236,0,0">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -34,18 +35,18 @@
 
 
         <TextBlock x:Name="infoText" Text="Download een YT Playlist:"
-                   FontSize="50" Opacity="0" FontWeight="Bold" Foreground="White"
-                   VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Collapsed" Height="84" Width="615" RenderTransformOrigin="0.5,0.5" Margin="0,178,0,0">
+                   FontSize="50" Opacity="1" FontWeight="Bold" Foreground="White"
+                   VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="Visible" Height="84" Width="615" RenderTransformOrigin="0.5,0.5" Margin="0,178,0,0">
         </TextBlock>
 
 
         <TextBox x:Name="YTLinkTextBox" Width="338" Height="30" 
-                 Visibility="Collapsed" Opacity="0" Margin="0,334,0,0" Text="Public Youtube of Youtube Music link 'https://youtu.be/xvF'"  HorizontalAlignment="Center"
+                 Visibility="Visible" Opacity="1" Margin="0,334,0,0" Text="Public Youtube of Youtube Music link 'https://youtu.be/xvF'"  HorizontalAlignment="Center"
                  VerticalAlignment="Top" Background="LightCyan" GotFocus="YTLinkTextBox_GotFocus" FontSize="15" LostFocus="YTLinkTextBox_LostFocus"/>
 
-        <Button x:Name="okBUt" Opacity="0" Visibility="Visible" FontSize="20" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Okbut_Click" Margin="0,406,0,0" Width="110" Height="30"></Button>
+        <Button x:Name="okBUt" Opacity="1" Visibility="Visible" FontSize="20" Content="OK" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Okbut_Click" Margin="0,406,0,0" Width="110" Height="30"></Button>
 
-        <Button x:Name="updatePlaylistBUt" Opacity="0" Visibility="Collapsed" FontSize="21" FontFamily="Calibri" Content="Vorige Playlist Updaten" Background="LightBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Click="updateplaylistbut_Click" Margin="0,505,0,0" Width="240" Height="38" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="updatePlaylistBUt" Opacity="1" Visibility="Visible" FontSize="21" FontFamily="Calibri" Content="Vorige Playlist Updaten" Background="LightBlue" HorizontalAlignment="Center" VerticalAlignment="Top" Click="updateplaylistbut_Click" Margin="0,505,0,0" Width="240" Height="38" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -57,31 +58,31 @@
         </Button>
 
         <TextBlock x:Name="VraagText" Text="Hoe wil je Playlist downloaden?"
-                   FontSize="50" Opacity="0" FontWeight="Bold" Foreground="White"
-                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" Height="84" Width="746" RenderTransformOrigin="0.5,0.5" Margin="180,178,0,0">
+                   FontSize="50" Opacity="1" FontWeight="Bold" Foreground="White"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Visible" Height="84" Width="746" RenderTransformOrigin="0.5,0.5" Margin="180,178,0,0">
         </TextBlock>
 
-        <Button x:Name="MP3BUt" Opacity="0" Visibility="Collapsed" FontSize="30" Content="MP3" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MP3but_Click" Margin="233,338,0,0" Width="168" Height="57"></Button>
-        <Button x:Name="MP4BUt" Opacity="0" Visibility="Collapsed" FontSize="30" Content="MP4" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MP4but_Click" Margin="699,338,0,0" Width="168" Height="57" ToolTip="Nog Niet Beschikbaar" ToolTipService.ShowOnDisabled="True"></Button>
+        <Button x:Name="MP3BUt" Opacity="1" Visibility="Visible" FontSize="30" Content="MP3" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MP3but_Click" Margin="233,338,0,0" Width="168" Height="57"></Button>
+        <Button x:Name="MP4BUt" Opacity="1" Visibility="Visible" FontSize="30" Content="MP4" HorizontalAlignment="Left" VerticalAlignment="Top" Click="MP4but_Click" Margin="699,338,0,0" Width="168" Height="57" ToolTip="Nog Niet Beschikbaar" ToolTipService.ShowOnDisabled="True"></Button>
 
 
 
 
         <TextBlock x:Name="downloadingTEXR" Text="Playlist Downloaden.."
-                   FontSize="60" Opacity="0" FontWeight="Bold" Foreground="Green"
-                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Collapsed" Height="84" Width="690" RenderTransformOrigin="0.5,0.5" Margin="50,135,0,0">
+                   FontSize="60" Opacity="1" FontWeight="Bold" Foreground="LightBlue"
+                   VerticalAlignment="Top" HorizontalAlignment="Left" Visibility="Visible" Height="84" Width="690" RenderTransformOrigin="0.5,0.5" Margin="50,135,0,0">
         </TextBlock>
 
         <TextBox x:Name="LogTextBox"
          Foreground="Blue"
          IsReadOnly="True"
-         Background="Aqua"
+         Background="LightBlue"
          VerticalScrollBarVisibility="Auto"
          HorizontalScrollBarVisibility="Auto"
          TextWrapping="Wrap"
          AcceptsReturn="True"
-         Opacity="0"
-         Visibility="Collapsed"
+         Opacity="1"
+         Visibility="Visible"
          VerticalAlignment="Center"
          HorizontalAlignment="Left"
          Width="345"
@@ -89,11 +90,13 @@
          Margin="745,0,0,0" />
 
 
-        <Button x:Name="thxBUt" Opacity="0" Visibility="Collapsed" FontSize="20" Content="Klaar" HorizontalAlignment="Left" VerticalAlignment="Top" Click="THXbut_Click" Margin="232,365,0,0" Width="230" Height="30"></Button>
-        <Button x:Name="openfolderBUT" Opacity="0" Visibility="Collapsed" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="261,0,0,96" Height="66" Width="172"></Button>
+        <Button x:Name="stopbutt" Opacity="1" Visibility="Visible" FontSize="20" Content="Stop" HorizontalAlignment="Left" VerticalAlignment="Top" Click="stopbut_Click" Margin="802,406,0,0" Width="230" Height="30"></Button>
+
+        <Button x:Name="thxBUt" Opacity="1" Visibility="Visible" FontSize="20" Content="Klaar" HorizontalAlignment="Left" VerticalAlignment="Top" Click="THXbut_Click" Margin="232,365,0,0" Width="230" Height="30"></Button>
+        <Button x:Name="openfolderBUT" Opacity="1" Visibility="Visible" FontSize="20" Content="De Map Openen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Folderopen_Click" Margin="261,0,0,96" Height="66" Width="172"></Button>
 
 
-        <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Collapsed" Opacity="0">
+        <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Visible" Opacity="1">
             <Ellipse Width="40" Height="40"
          Stroke="LightBlue" StrokeThickness="6"
          StrokeDashArray="2,3"

@@ -22,6 +22,24 @@ namespace Simple_YTDLP.Windows.UI
         {
             InitializeComponent();
 
+            Background.Opacity = 0;
+
+            APPTitle.Visibility = Visibility.Collapsed;
+            APPTitle.Opacity = 0;
+
+            loadingText.Opacity = 0;
+
+            version.Opacity = 0;
+
+            newversion.Opacity = 0;
+
+            NS.Opacity = 0;
+
+            LoadingIcon.Opacity = 0;
+            LoadingIcon.Visibility = Visibility.Collapsed;
+
+
+
             Mouse.OverrideCursor = System.Windows.Input.Cursors.Wait; // set cursor to wait
 
             this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA";
@@ -40,6 +58,9 @@ namespace Simple_YTDLP.Windows.UI
             LogManager.LogToFile("@NeoCircuit-Studios@", "INFO");
             LogManager.LogToFile($"Simple_YTDLP {currentVersion}", "INFO");
             LogManager.LogToFile("Copyright (C) 2025 NeoCircuit Studios", "INFO");
+
+            this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA - Warming Up...";
+
 
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string folderPath = Path.Combine(appDataPath, "NeoCircuit-Studios", "Simple-YTDLP");
@@ -114,9 +135,11 @@ namespace Simple_YTDLP.Windows.UI
                 LogManager.LogToFile("Update available!", "INFO");
                 LogManager.LogToFile($"Local: '{installedVer}' vs Server:'{updateVer}' ", "INFO");
 
-                await FadeIn(newversion, 300); 
+                await FadeIn(newversion, 300);
 
-                newversion.Text = $"Nieuw:{updateVer}";
+                this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA - Updating...";
+
+                newversion.Text = $"Nieuw: {updateVer}";
                 loadingText.Text = "Update Gevonden!";
 
                 if (File.Exists(updaterPath))
@@ -152,6 +175,7 @@ namespace Simple_YTDLP.Windows.UI
 
                 // ---- Start updater ----
 
+                this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA - Waiting...";
                 loadingText.Text = "Wachten...";
 
                 Directory.Delete(Path.Combine(updaterDir, "Logs")); // delete old version file
@@ -171,6 +195,8 @@ namespace Simple_YTDLP.Windows.UI
             }
             else
             {
+                this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA - Starting...";
+
                 loadingText.Text = "Starten..";
             }
         }
@@ -220,6 +246,9 @@ namespace Simple_YTDLP.Windows.UI
             Background.Opacity = 0.0;
 
             await Task.Delay(400); //load lol
+
+            this.Title = "Simple_YTDLP - NeoCircuit-Studios - BETA";
+
 
             Mouse.OverrideCursor = null; // reset cursor to default // Very important!!!!
 

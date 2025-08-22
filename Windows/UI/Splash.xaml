@@ -6,34 +6,33 @@
         xmlns:local="clr-namespace:Simple_YTDLP.Windows.UI"
         mc:Ignorable="d"
         WindowStyle="ThreeDBorderWindow"
-        Background="Black"
         ResizeMode="CanMinimize"
         WindowStartupLocation="CenterScreen"
         Title="Simple-YTDLP - NeoCircuit-Studios" Height="600" Width="1090">
     <Grid>
         <Grid Background="Black">
-            <Image x:Name="Background" Width="1090" Height="600" Stretch="Fill" 
-               VerticalAlignment="Center" Opacity="0" HorizontalAlignment="Center" Visibility="Visible" />
+            <Image x:Name="Background" Source="pack://application:,,,/Core/APP/sys/Splash.jpg" Width="1090" Height="600" Stretch="Fill" 
+               VerticalAlignment="Center" Opacity="1" HorizontalAlignment="Center" Visibility="Visible" />
 
 
             <TextBlock x:Name="APPTitle" Text="Simple-YTDLP"
-                   FontSize="80" Opacity="0" FontWeight="Bold" Foreground="Black"
+                   FontSize="80" Opacity="1" FontWeight="Bold" Foreground="Black"
                    VerticalAlignment="Top" HorizontalAlignment="Center"
-                   Margin="0,10,0,0" Visibility="Collapsed"/>
+                   Margin="0,10,0,0" Visibility="Visible"/>
 
 
-            <TextBlock x:Name="loadingText" Opacity="0" Text="Laden..."
+            <TextBlock x:Name="loadingText" Opacity="1" Text="Laden..."
                        FontSize="25" FontWeight="Bold" Foreground="Black"
                        VerticalAlignment="Bottom" HorizontalAlignment="Right"
                        Margin="0,0,48,10"/>
 
 
-            <TextBlock x:Name="version" Opacity="0" Text="0.0.0.0" Foreground="Black"
+            <TextBlock x:Name="version" Opacity="1" Text="0.0.0.0" Foreground="Black"
                             FontSize="20" FontWeight="Bold"
                             VerticalAlignment="Bottom" HorizontalAlignment="Left"
                             Margin="15,0,0,0" RenderTransformOrigin="0.522,0.008"/>
-            
-            <TextBlock x:Name="newversion" Opacity="0" Text="0.0.0.0" Foreground="Black"
+
+            <TextBlock x:Name="newversion" Opacity="1" Text="Nieuw: 0.0.0.0" Foreground="Black"
                             FontSize="20" FontWeight="Bold"
                             VerticalAlignment="Bottom" HorizontalAlignment="Left"
                             Margin="15,0,0,32" RenderTransformOrigin="0.522,0.008"/>
@@ -41,13 +40,13 @@
 
 
             <TextBlock x:Name="NS" Text="Copyright © NeoCircuit-Studios 2025" Foreground="Black"
-                            FontSize="20"  Opacity="0" FontWeight="Bold"
+                            FontSize="20"  Opacity="1" FontWeight="Bold"
                             VerticalAlignment="Top" HorizontalAlignment="Center"
                             Margin="0,527,0,0" RenderTransformOrigin="0.522,0.008"/>
 
 
 
-            <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Collapsed" Opacity="0">
+            <Canvas Width="100" Height="100" x:Name="LoadingIcon" Visibility="Visible" Opacity="1">
                 <Ellipse Width="40" Height="40"
          Stroke="LightBlue" StrokeThickness="6"
          StrokeDashArray="2,3"

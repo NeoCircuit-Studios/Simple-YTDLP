@@ -16,10 +16,58 @@ namespace Simple_YTDLP.Windows.UI
     /// </summary>
     public partial class Mainmenu : UserControl
     {
+        bool Stop = false;
         public Mainmenu()
         {
             InitializeComponent();
-            this.Loaded += Mainmenu_Loaded; // safe async entrypoint
+
+            InstallingText.Visibility = Visibility.Collapsed;
+            InstallingText.Opacity = 0;
+
+            ProgressBar.Visibility = Visibility.Collapsed;
+            ProgressBar.Opacity = 0;
+
+            infoText.Visibility = Visibility.Collapsed;
+            infoText.Opacity = 0;
+
+            YTLinkTextBox.Visibility = Visibility.Collapsed;
+            YTLinkTextBox.Opacity = 0;
+
+            okBUt.Visibility = Visibility.Collapsed;
+            okBUt.Opacity = 0;
+
+            updatePlaylistBUt.Visibility = Visibility.Collapsed;
+            updatePlaylistBUt.Opacity = 0;
+
+            VraagText.Visibility = Visibility.Collapsed;
+            VraagText.Opacity = 0;
+
+            MP3BUt.Visibility = Visibility.Collapsed;   
+            MP3BUt.Opacity = 0;
+
+            MP4BUt.Visibility = Visibility.Collapsed;
+            MP4BUt.Opacity = 0;
+
+            downloadingTEXR.Visibility = Visibility.Collapsed;
+            downloadingTEXR.Opacity = 0;
+
+            LogTextBox.Visibility = Visibility.Collapsed;
+            LogTextBox.Opacity = 0;
+
+            stopbutt.Visibility = Visibility.Collapsed;
+            stopbutt.Opacity = 0;
+
+            thxBUt.Visibility = Visibility.Collapsed;
+            thxBUt.Opacity = 0;
+
+            LoadingIcon.Visibility = Visibility.Collapsed;
+            LoadingIcon.Opacity = 0;
+
+            openfolderBUT.Visibility = Visibility.Collapsed;
+            openfolderBUT.Opacity = 0;
+
+
+            this.Loaded += Mainmenu_Loaded; 
         }
 
         private async void Mainmenu_Loaded(object sender, RoutedEventArgs e)
@@ -34,6 +82,7 @@ namespace Simple_YTDLP.Windows.UI
 
             Background.Visibility = Visibility.Collapsed;
             Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Mainmenu.jpg"));
+            Background.Opacity = 0;
             InstallingText.Visibility = Visibility.Collapsed;
             ProgressBar.Visibility = Visibility.Collapsed;
             infoText.Visibility = Visibility.Collapsed;
@@ -41,6 +90,7 @@ namespace Simple_YTDLP.Windows.UI
             downloadingTEXR.Visibility = Visibility.Collapsed;
             okBUt.Visibility = Visibility.Collapsed;
             thxBUt.Visibility = Visibility.Collapsed;
+            stopbutt.Visibility = Visibility.Collapsed;
             openfolderBUT.Visibility = Visibility.Collapsed;
             LogTextBox.Visibility = Visibility.Collapsed;
             LoadingIcon.Visibility = Visibility.Collapsed;
@@ -49,7 +99,9 @@ namespace Simple_YTDLP.Windows.UI
             MP4BUt.Visibility = Visibility.Collapsed;
             updatePlaylistBUt.Visibility = Visibility.Collapsed;
 
+            stopbutt.IsEnabled = false;
             okBUt.IsEnabled = true;
+            Stop = false;
             hasEnteredValidLink0 = false;
             updatePlaylistBUt.IsEnabled = true;
             linkki = "NULL";
@@ -104,9 +156,9 @@ namespace Simple_YTDLP.Windows.UI
             Directory.CreateDirectory(extractPath);
 
             await Task.WhenAll(
-                FadeIn(Background, 0, 300),
-                FadeIn(InstallingText, 0, 300),
-                FadeIn(ProgressBar, 0, 300)
+                FadeIn(Background, 200, 300),
+                FadeIn(InstallingText, 200, 300),
+                FadeIn(ProgressBar, 200, 300)
             );
 
             ProgressBar.Value = 0;
@@ -123,7 +175,7 @@ namespace Simple_YTDLP.Windows.UI
                 if (!File.Exists(zipPath))
                 {
                     LogManager.LogToFile($"Missing zip: {exeName}");
-                    System.Diagnostics.Process.Start("updater.exe", $"-reinstall=\"{exeName}\""); //path is not okey
+                    //System.Diagnostics.Process.Start("updater.exe", $"-reinstall=\"{exeName}\""); //path is not okey
                 }
             }
 
@@ -250,9 +302,9 @@ namespace Simple_YTDLP.Windows.UI
             }
 
             await Task.WhenAll(
-                FadeIn(infoText, 0, 300),
-                FadeIn(YTLinkTextBox, 0, 300),
-                FadeIn(okBUt, 0, 300)
+                FadeIn(infoText, 200, 300),
+                FadeIn(YTLinkTextBox, 200, 300),
+                FadeIn(okBUt, 200, 300)
             );
 
             if (isupdatingplaylistcool)
@@ -315,9 +367,9 @@ namespace Simple_YTDLP.Windows.UI
             updatePlaylistBUt.Visibility = Visibility.Collapsed;
 
             await Task.WhenAll(
-                FadeIn(VraagText, 0, 300),
-                FadeIn(MP3BUt, 0, 300),
-                FadeIn(MP4BUt, 0, 300)
+                FadeIn(VraagText, 100, 300),
+                FadeIn(MP3BUt, 100, 300),
+                FadeIn(MP4BUt, 100, 300)
             );
             MP4BUt.IsEnabled = false; // Disable MP4 button for now                                       !!!!!       
         }
@@ -337,16 +389,18 @@ namespace Simple_YTDLP.Windows.UI
             MP4BUt.Visibility = Visibility.Collapsed;
             updatePlaylistBUt.Visibility = Visibility.Collapsed;
 
+
             ////////////////////////////////////////////////////
+            
             Background.BeginAnimation(UIElement.OpacityProperty, fadeOut);
             Background.Source = new BitmapImage(new Uri("pack://application:,,,/Core/APP/sys/Downloading.jpg"));
             await Task.Delay(800);
 
             await Task.WhenAll(
-                FadeIn(Background, 0, 300),
-                FadeIn(downloadingTEXR, 0, 300),
-                FadeIn(LogTextBox, 0, 300),
-                FadeIn(LoadingIcon, 0, 300)
+                FadeIn(Background, 200, 300),
+                FadeIn(downloadingTEXR, 200, 300),
+                FadeIn(LogTextBox, 200, 300),
+                FadeIn(LoadingIcon, 200, 300)
             );
 
             string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -451,7 +505,7 @@ namespace Simple_YTDLP.Windows.UI
                 isDone = true;
             });
 
-            if (isDone)
+            if (isDone && Stop == false)
             {
                 var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
                 {
@@ -462,17 +516,19 @@ namespace Simple_YTDLP.Windows.UI
                 };
                 LoadingIcon.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
                 LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+                stopbutt.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
 
                 await Task.WhenAll(
                     FadeIn(thxBUt, 0, 300),
                     FadeIn(openfolderBUT, 0, 300)
                 );
+
             }
         }
         private async void MP4but_Click(object sender, EventArgs e)
         {
-
         }
+
         private async void updateplaylistbut_Click(object sender, EventArgs e)
         {
             var fadeOut = new System.Windows.Media.Animation.DoubleAnimation
@@ -496,6 +552,7 @@ namespace Simple_YTDLP.Windows.UI
             updatePlaylistBUt.IsEnabled = false;
 
 
+
             if (!string.IsNullOrEmpty(savedFolder) && !string.IsNullOrEmpty(savedUrl))
             {
                 ////////////////////////////////////////////////////
@@ -506,10 +563,10 @@ namespace Simple_YTDLP.Windows.UI
                 downloadingTEXR.Text = "Playlist Updaten..";
 
                 await Task.WhenAll(
-                    FadeIn(Background, 0, 300),
-                    FadeIn(downloadingTEXR, 0, 300),
-                    FadeIn(LogTextBox, 0, 300),
-                    FadeIn(LoadingIcon, 0, 300)
+                    FadeIn(Background, 200, 300),
+                    FadeIn(downloadingTEXR, 200, 300),
+                    FadeIn(LogTextBox, 200, 300),
+                    FadeIn(LoadingIcon, 200, 300)
                 );
   
                 string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
@@ -603,7 +660,7 @@ namespace Simple_YTDLP.Windows.UI
                     isDone = true;
                 });
 
-                if (isDone)
+                if (isDone && Stop == false)
                 {
                     var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
                     {
@@ -616,8 +673,8 @@ namespace Simple_YTDLP.Windows.UI
                     LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
 
                     await Task.WhenAll(
-                        FadeIn(thxBUt, 0, 300),
-                        FadeIn(openfolderBUT, 0, 300)
+                        FadeIn(thxBUt, 100, 300),
+                        FadeIn(openfolderBUT, 100, 300)
                     );
                 }
             }
@@ -631,6 +688,21 @@ namespace Simple_YTDLP.Windows.UI
         {
             //LogManager.LogToFile("user stopped the app");
             //Application.Current.Shutdown();
+
+            var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromMilliseconds(500),
+                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+            };
+
+            thxBUt.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            openfolderBUT.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            downloadingTEXR.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            Background.Visibility = Visibility.Collapsed;
+
             await Reload();
         }
 
@@ -646,6 +718,45 @@ namespace Simple_YTDLP.Windows.UI
             }
         }
 
+        private async void stopbut_Click(object sender, EventArgs e)
+        {
+            Stop = true;
+            stopbutt.IsEnabled = false;
+            LogManager.LogToFile("User requested to stop the download.");
+
+            // --- Kill yt-dlp.exe if still running ---
+            try
+            {
+                foreach (var proc in Process.GetProcessesByName("yt-dlp"))
+                {
+                    proc.Kill();   // force kill
+                    proc.WaitForExit();
+                    LogManager.LogToFile($"Killed yt-dlp.exe (PID {proc.Id})", "INFO");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogManager.LogToFile($"Failed to kill yt-dlp.exe: {ex.Message}", "ERROR");
+            }
+
+            var fadeOutUI = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                From = 1.0,
+                To = 0.0,
+                Duration = TimeSpan.FromMilliseconds(500),
+                FillBehavior = System.Windows.Media.Animation.FillBehavior.HoldEnd
+            };
+
+            thxBUt.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            openfolderBUT.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            LogTextBox.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            downloadingTEXR.BeginAnimation(UIElement.OpacityProperty, fadeOutUI);
+            Background.Visibility = Visibility.Collapsed;
+            openfolderBUT.Visibility = Visibility.Collapsed;
+            thxBUt.Visibility = Visibility.Collapsed;
+
+            await Reload();
+        }
 
         private void YTLinkTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
